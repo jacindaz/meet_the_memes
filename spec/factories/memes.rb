@@ -2,11 +2,9 @@
 
 FactoryGirl.define do
   factory :meme do
-    user_id 1
-    url "MyString"
+    url "http://www.google.com"
     sequence(:name) {|n| "Meowsinkprrrrr #{n}"}
-    description "MyText"
-    average_rating 1.5
-    timestamps "MyString"
+    description "Some kewl cats."
+    average_rating 3
   end
 end
