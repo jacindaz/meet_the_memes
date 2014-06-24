@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :meme do
     user_id 1
     url "MyString"
-    name "MyString"
+    sequence(:name) {|n| "Meowsinkprrrrr #{n}"}
     description "MyText"
     average_rating 1.5
     timestamps "MyString"
