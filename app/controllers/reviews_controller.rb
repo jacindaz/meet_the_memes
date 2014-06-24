@@ -1,4 +1,10 @@
 class ReviewsController < ApplicationController
+  def index
+    @reviews = Review.last(10)
+    # eventually add pagination
+    @title = "All Reviews"
+  end
+
   def new
   end
 
