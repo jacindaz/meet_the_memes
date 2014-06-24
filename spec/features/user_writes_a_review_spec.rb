@@ -45,13 +45,4 @@ feature 'User creates a new review for a specific meme' do
     # end
   end
 
-  scenario 'User adds a duplicate review' do
-  end
-
-  scenario 'User adds a blank review' do
-  end
-
-  scenario 'User leaves blank fields in review' do
-  end
-
 end

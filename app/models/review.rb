@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
 
-  validates_presence_of :user_id, :image_id, :rating, :title, :body
+  validates_presence_of :user_id, :meme_id, :rating, :title, :body
+  validates_uniqueness_of :title
 
   validates :user_id, numericality: { integer: true }
   validates :meme_id, numericality: { integer: true }
