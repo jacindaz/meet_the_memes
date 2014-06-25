@@ -1,5 +1,5 @@
 <div>
-  <h1>Creates teh Meme</h1>
+  <h1>Creates the Meme</h1>
 </div>
 
 <div>
@@ -7,7 +7,7 @@
     <ul>
       <% @meme.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>  
+      <% end %>
     </ul>
   <% end %>
 </div>
@@ -15,17 +15,17 @@
 <div>
   <%= form_for @meme do |f| %>
     <div>
-      <%= f.label :name %>: 
+      <%= f.label :name %>:
       <%= f.text_field :name %><br>
     </div>
 
     <div>
-      <%= f.label :url %>: 
+      <%= f.label :url %>:
       <%= f.text_field :url %><br>
     </div>
 
     <div>
-      <%= f.label :description %>: 
+      <%= f.label :description %>:
       <%= f.text_field :description %><br>
     </div>
 

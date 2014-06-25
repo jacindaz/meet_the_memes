@@ -14,7 +14,7 @@ feature 'User creates a new review for a specific meme' do
 
     visit meme_path(meme)
 
-    fill_in 'Rating', with: 5
+    select "5", :from => 'Rating'
     fill_in 'Title', with: 'excellent meme'
     fill_in 'Body', with: 'good stuff'
     click_button 'Submit Review'
