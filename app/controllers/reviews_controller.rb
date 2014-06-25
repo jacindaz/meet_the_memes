@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       redirect_to meme_path(@meme)
     else
       flash[:notice] = "I'm sorry, your review couldn't be saved."
-      redirect_to meme_path(@meme)
+      render :new
     end
   end
 

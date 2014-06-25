@@ -7,6 +7,7 @@ class MemesController < ApplicationController
   def show
     @meme = Meme.find(params[:id])
     @review = Review.new
+    @reviews.meme = @meme
     @reviews = Review.order(:created_at).limit(10)
   end
 
