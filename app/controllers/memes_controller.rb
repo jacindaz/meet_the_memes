@@ -8,7 +8,6 @@ class MemesController < ApplicationController
     @meme = Meme.find(params[:id])
     @review = Review.new
     @reviews = Review.order(:created_at).limit(10)
-    #binding.pry
   end
 
   def new

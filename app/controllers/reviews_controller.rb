@@ -1,9 +1,4 @@
 class ReviewsController < ApplicationController
-  def index
-    @meme = Meme.find(params[:meme_id])
-    @reviews = @meme.reviews
-    @title = "All Reviews for #{@meme.name}"
-  end
 
   def new
     @review = Review.new
