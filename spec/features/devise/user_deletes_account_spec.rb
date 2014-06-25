@@ -16,13 +16,13 @@ feature 'User deletes account.' do
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Done' 
+    click_on 'Done'
 
     visit edit_user_registration_path
 
     click_on 'Cancel my account'
 
-    expect(page).to have_content("Such sad, no account :(")
+    expect(page).to have_content('Such sad, no account :(')
     expect(User.count).to eq(0)
   end
 end

@@ -8,7 +8,7 @@ feature 'User signs out.' do
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Done' 
+    click_on 'Done'
 
     expect(page).to have_content('Such welcome. Doge friends.')
 

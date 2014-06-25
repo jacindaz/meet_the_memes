@@ -8,7 +8,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Password', with: '1234567890'
     fill_in 'Password confirmation', with: '1234567890'
     fill_in 'Username', with: 'dogemaster1'
-    click_on 'Done' 
+    click_on 'Done'
 
     expect(User.count).to eq(1)
     user = User.where(email: 'bob@bigbob.com').first
@@ -19,7 +19,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
   scenario 'User doesn\'t fill out required fields.' do
     visit new_user_registration_path
 
-    click_on 'Done' 
+    click_on 'Done'
 
     expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
@@ -33,7 +33,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Password', with: '1234567890'
     fill_in 'Password confirmation', with: '101112131415'
     fill_in 'Username', with: 'dogemaster1'
-    click_on 'Done' 
+    click_on 'Done'
 
     expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
@@ -47,7 +47,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Password', with: '123456'
     fill_in 'Password confirmation', with: '123456'
     fill_in 'Username', with: 'dogemaster1'
-    click_on 'Done' 
+    click_on 'Done'
 
     expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
@@ -61,7 +61,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Password', with: '1234567890'
     fill_in 'Password confirmation', with: '1234567890'
     fill_in 'Username', with: 'd'
-    click_on 'Done' 
+    click_on 'Done'
 
     expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
