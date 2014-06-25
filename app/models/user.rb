@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  mount :profile_picture, ProfilePictureUploader
+  mount_uploader :profile_picture, ProfilePictureUploader
 
   validates :email, :password, :password_confirmation, :username, presence: true
   validates :password, confirmation: true, length: {minimum: 10}
