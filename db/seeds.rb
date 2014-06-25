@@ -7,6 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Meme.create(name: 'monkey butt pick',
 # 	url: 'http://www.google.com',
-# 	user_id: 1,
-# 	description: 'poop',
+# 	description: 'poop'
 # 	)
+
+Review.create!(
+  meme_id: 1,
+  rating: 5,
+  title: "This meme is awesome",
+  body: "I repeat: this meme is awesome."
+  )

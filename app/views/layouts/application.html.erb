@@ -7,15 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<<<<<<< HEAD
+
 
   <h1><%= @title %></h1>
-
-=======
   <% if flash.any? %>
     <%= flash[:notice] %>
   <% end %>
->>>>>>> origin
+
 <%= yield %>
 
 <div>

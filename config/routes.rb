@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :memes do
-    resources :reviews, only: [:new, :create, :edit, :destroy]
-  end
+  root to: "memes#index"
 
-  resources :reviews, only: [:index]
+  resources :memes do
+    resources :reviews, only: [:index, :show, :new, :create, :edit, :destroy]
+  end
 end
+
