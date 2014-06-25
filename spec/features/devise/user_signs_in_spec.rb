@@ -8,7 +8,7 @@ feature 'User signs in.' do
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Sign In' 
+    click_on 'Done' 
 
     expect(page).to have_content('Such welcome. Doge friends.')
   end
@@ -20,7 +20,7 @@ feature 'User signs in.' do
     
     fill_in 'Email', with: 'wrong@email.com'
     fill_in 'Password', with: user.password
-    click_on 'Sign In' 
+    click_on 'Done' 
 
     expect(page).to_not have_content('Such welcome. Doge friends.')
     expect(page).to have_content('Such bad email or password.')
@@ -33,7 +33,7 @@ feature 'User signs in.' do
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'guessagain'
-    click_on 'Sign In' 
+    click_on 'Done' 
 
     expect(page).to_not have_content('Such welcome. Doge friends.')
     expect(page).to have_content('Such bad email or password.')
