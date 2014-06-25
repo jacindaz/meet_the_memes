@@ -13,3 +13,22 @@
 <div>
   <p><%= @meme.description %></p>
 </div>
+
+<div>
+  <% @meme.reviews.each do |review| %>
+    <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
+    <p><%= review.body %></p>
+  <% end %>
+</div>
+
+<hr>
+
+<h3>Submit a Review</h3>
+<%= simple_form_for [@meme, @review] do |f| %>
+  <%= f.input :title, input_html: { maxlength: 90 } %>
+  <%= f.input :rating, collection: [5,4,3,2,1] %>
+  <%= f.input :body, placeholder: "Do you love this meme???" %>
+  <%= f.button :submit, "Submit Review" %>
+<% end %>
+
+
