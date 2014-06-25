@@ -1,23 +1,25 @@
-<h1> Behold Meme </h1>
+<div>
+  <h1> Behold Meme </h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @memes.each do |meme| %>
-    <tr>
-      <td> meme.name </td>
-      <td> meme.average_rating </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Average Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @memes.each do |meme| %>
+      <tr>
+        <td><%= meme.name %></td>
+        <td><%= meme.average_rating %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 
 
