@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.order(updated_at: :desc).limit(10)
-    # eventually add pagination
-    @title = "All Reviews"
+    @meme = Meme.find(params[:meme_id])
+    @reviews = @meme.reviews
+    @title = "All Reviews for #{@meme.name}"
   end
 
   def new
@@ -10,15 +10,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @meme = Meme.find(params[:id])
+    @meme = Meme.find(params[:meme_id])
     @review = Review.new(review_params)
+    @review.meme = @meme
 
     if @review.save
       flash[:notice] = "Success!"
-      redirect meme_path(@meme)
+      redirect_to meme_path(@meme)
     else
       flash[:notice] = "I'm sorry, your review couldn't be saved."
-      redirect meme_path(@meme)
+      redirect_to meme_path(@meme)
     end
   end
 
