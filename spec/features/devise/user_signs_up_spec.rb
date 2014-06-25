@@ -10,6 +10,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Username', with: 'dogemaster1'
     click_on 'Done' 
 
+    expect(User.count).to eq(1)
     user = User.where(email: 'bob@bigbob.com').first
     expect(user.username).to eq('dogemaster1')
     expect(page).to have_content('Wow. Such user.  Much sign up.')
@@ -20,6 +21,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
 
     click_on 'Done' 
 
+    expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
     expect(page).to have_content('can\'t be blank')
   end
@@ -33,6 +35,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Username', with: 'dogemaster1'
     click_on 'Done' 
 
+    expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
     expect(page).to have_content('doesn\'t match')
   end
@@ -46,6 +49,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Username', with: 'dogemaster1'
     click_on 'Done' 
 
+    expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
     expect(page).to have_content('too short')
   end
@@ -59,6 +63,7 @@ feature 'User signs up successfully, doge memes aplenty.' do
     fill_in 'Username', with: 'd'
     click_on 'Done' 
 
+    expect(User.count).to eq(0)
     expect(page).to_not have_content('Wow. Such user.  Much sign up.')
     expect(page).to have_content('too short')
   end
