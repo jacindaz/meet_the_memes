@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>InternetThings</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<<<<<<< HEAD
+  <head>
+    <title> Meet The Memes </title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if flash.any? %>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+    <% end %>
 
-  <h1><%= @title %></h1>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 
-=======
-  <% if flash.any? %>
-    <%= flash[:notice] %>
-  <% end %>
->>>>>>> origin
-<%= yield %>
+    <%= yield %>
 
-<div>
-  <p>Created by Jacinda, Adam, Craig, Dan | Launch Academy 2014</p>
-</div>
-
-</body>
+    <div>
+      <p>Created by Jacinda, Adam, Craig, Dan | Launch Academy 2014</p>
+    </div>
+  </body>
 </html>
