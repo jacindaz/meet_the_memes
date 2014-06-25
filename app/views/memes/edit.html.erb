@@ -1,0 +1,36 @@
+<div>
+  <h1>Edit <%= @meme.name %></h1>
+</div>
+
+<div>
+  <% if @meme.errors.any? %>
+    <ul>
+      <% @meme.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>  
+    </ul>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for @meme do |f| %>
+    <div>
+      <%= f.label :name %>:
+      <%= f.text_field :name %><br>
+    </div>
+
+    <div>
+      <%= f.label :url %>: 
+      <%= f.text_field :url %><br>
+    </div>
+
+    <div>
+      <%= f.label :description %>: 
+      <%= f.text_field :description %><br>
+    </div>
+
+    <%= f.submit %>
+
+  <% end %>
+
+</div>
