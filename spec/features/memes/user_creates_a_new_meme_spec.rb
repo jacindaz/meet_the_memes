@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User creates a new meme' do 
+feature 'User creates a new meme' do
 
   scenario 'User creates a valid meme' do
     meme = FactoryGirl.create(:meme)
@@ -12,7 +12,7 @@ feature 'User creates a new meme' do
     fill_in 'Description', with: meme.description
     click_on 'Create Meme'
 
-    expect(page).to have_content("Creates teh meme!!!")
+    expect(page).to have_content('Creates teh meme!!!')
     expect(page).to have_content(meme.name)
     expect(page).to have_content(meme.description)
     expect(page).to have_content(meme.average_rating)
@@ -22,6 +22,6 @@ feature 'User creates a new meme' do
     visit new_meme_path
     click_on 'Create Meme'
 
-    expect(page).to have_content("Whoopsie Goldberg. Such trouble.")
+    expect(page).to have_content('Whoopsie Goldberg. Such trouble.')
   end
 end
