@@ -25,24 +25,6 @@ feature 'User creates a new review for a specific meme' do
 
     expect(meme.reviews.count).to eq(1)
 
-    # memes = FactoryGirl.create_list(:meme, 3)
-
-    # memes.each do |meme|
-    #   reviews = FactoryGirl.create_list(:review, 3)
-    #   visit meme_path(meme)
-
-    #   reviews.each do |review|
-    #     fill_in 'Rating', with: review.rating
-    #     fill_in 'Title', with: review.title
-    #     fill_in 'Body', with: review.body
-    #     click_on 'Submit Review'
-
-    #     expect(page).to have_content 'Success'
-    #     expect(page).to have_content review.rating
-    #     expect(page).to have_content review.title
-    #     expect(page).to have_content review.body
-    #   end
-    # end
   end
 
 end
