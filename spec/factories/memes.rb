@@ -2,9 +2,8 @@
 
 FactoryGirl.define do
   factory :meme do
-    url "http://www.google.com"
+    url "http://noodlytime.com/img/a0126590_22302718.jpg"
     sequence(:name) {|n| "Meowsinkprrrrr #{n}"}
     description "Some kewl cats."
-    average_rating 3
   end
 end

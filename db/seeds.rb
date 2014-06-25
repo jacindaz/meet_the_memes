@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#Meme.create(name: 'monkey butt pick', 
-	#url: 'http://www.google.com',
-	#user_id: 1,
-	#description: 'poop',
-	#)
+# Meme.create(name: 'monkey butt pick',
+# 	url: 'http://www.google.com',
+# 	user_id: 1,
+# 	description: 'poop',
+# 	)

@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
 
+  <h1><%= @title %></h1>
+
+=======
+  <% if flash.any? %>
+    <%= flash[:notice] %>
+  <% end %>
+>>>>>>> origin
 <%= yield %>
+
+<div>
+  <p>Created by Jacinda, Adam, Craig, Dan | Launch Academy 2014</p>
+</div>
 
 </body>
 </html>
