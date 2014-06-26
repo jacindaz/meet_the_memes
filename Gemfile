@@ -32,6 +32,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'valid_attribute'
   gem 'pry-rails'
 end
 
