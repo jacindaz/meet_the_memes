@@ -1,4 +1,6 @@
 class Review < ActiveRecord::Base
+  belongs_to :meme
+  belongs_to :user
 
   validates_presence_of :meme, :rating, :title, :body
   validates_uniqueness_of :title
@@ -14,7 +16,4 @@ class Review < ActiveRecord::Base
     too_short: "Must have at least %{count} words.",
     too_long: "Must have less than %{count} words."
   }
-
-  belongs_to :meme
-
 end

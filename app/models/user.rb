@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :reviews
+  has_many :memes
+
   validates :email, :password, :password_confirmation, :username, presence: true
   validates :username, length: {minimum: 2, maximum: 25}
 
