@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  devise_for :users
   root to: "memes#index"
 
   resources :memes do
@@ -6,5 +8,6 @@ Rails.application.routes.draw do
       resources :votes, only: [:create, :update]
     end
   end
+
 end
 

@@ -1,4 +1,4 @@
-[ER Diagram](ER.png)
+![ER Diagram](ER.png)
 
 User Stories:
 

@@ -28,7 +28,8 @@
 <h3>Submit a Review</h3>
 <%= simple_form_for [@meme, @review] do |f| %>
   <%= f.input :title, input_html: { maxlength: 90 } %>
-  <%= f.input :rating, collection: [5,4,3,2,1] %>
+  <%= f.label :rating %>
+  <%= f.select :rating, [5,4,3,2,1] %>
   <%= f.input :body, placeholder: "Do you love this meme???" %>
   <%= f.button :submit, "Submit Review" %>
 <% end %>

@@ -3,28 +3,23 @@ require 'rails_helper'
 feature 'User creates a new review for a specific meme' do
   scenario 'User creates a new review' do
     meme = FactoryGirl.create(:meme)
-    # user = FactoryGirl.create(:user)
 
-    # visit new_user_session_path
+    user = FactoryGirl.create(:user)
 
-    # fill_in 'Email', with: user.email
-    # fill_in 'Password', with: user.password
-
-    # click_button 'Sign in'
+    sign_in_as(user)
 
     visit meme_path(meme)
 
-    select "5", :from => 'Rating'
+    select 5, from: 'Rating'
     fill_in 'Title', with: 'excellent meme'
-    fill_in 'Body', with: 'good stuff sdfj klas dkljd fkjsd sdj klf dsa jk'
+    fill_in 'Body', with: 'good stuff very insightful meme here'
+
     click_button 'Submit Review'
 
     expect(page).to have_content('excellent meme')
-    expect(page).to have_content('good stuff')
+    expect(page).to have_content('good stuff very insightful meme here')
     expect(page).to have_content('5')
 
     expect(meme.reviews.count).to eq(1)
-
   end
-
 end

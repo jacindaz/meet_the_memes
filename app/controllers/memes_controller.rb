@@ -16,6 +16,7 @@ class MemesController < ApplicationController
 
   def create
     @meme = Meme.new(meme_params)
+    @meme.user = current_user
 
     if @meme.save
       flash[:notice] = "Creates the meme!!!"

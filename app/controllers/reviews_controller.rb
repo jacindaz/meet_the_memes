@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
     @meme = Meme.find(params[:meme_id])
     @review = Review.new(review_params)
     @review.meme = @meme
+    @review.user = current_user
 
     if @review.save
       flash[:notice] = "Success!"
