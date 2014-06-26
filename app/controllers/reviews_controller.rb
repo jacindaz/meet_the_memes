@@ -1,9 +1,5 @@
 class ReviewsController < ApplicationController
 
-  def new
-    @review = Review.new
-  end
-
   def create
     @meme = Meme.find(params[:meme_id])
     @review = Review.new(review_params)
@@ -14,7 +10,7 @@ class ReviewsController < ApplicationController
       redirect_to meme_path(@meme)
     else
       flash[:notice] = "I'm sorry, your review couldn't be saved."
-      render :new
+      render :'memes/show'
     end
   end
 

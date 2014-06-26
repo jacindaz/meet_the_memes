@@ -18,6 +18,8 @@
   <% @meme.reviews.each do |review| %>
     <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
     <p><%= review.body %></p>
+    <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %>
+    <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
   <% end %>
 </div>
 
@@ -30,5 +32,3 @@
   <%= f.input :body, placeholder: "Do you love this meme???" %>
   <%= f.button :submit, "Submit Review" %>
 <% end %>
-
-

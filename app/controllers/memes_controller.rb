@@ -7,9 +7,7 @@ class MemesController < ApplicationController
   def show
     @meme = Meme.find(params[:id])
     @review = Review.new
-
-    #add where
-    @reviews = Review.order(:created_at).limit(10)
+    @vote = Vote.new
   end
 
   def new
@@ -20,7 +18,7 @@ class MemesController < ApplicationController
     @meme = Meme.new(meme_params)
 
     if @meme.save
-      flash[:notice] = "Creates teh meme!!!"
+      flash[:notice] = "Creates the meme!!!"
       redirect_to meme_path(@meme)
     else
       flash.now[:notice] = "Whoopsie Goldberg. Such trouble."
