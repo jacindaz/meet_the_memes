@@ -1,27 +1,34 @@
 require 'rails_helper'
 
-feature 'User creates a new meme' do 
+feature 'User creates a new meme' do
+  context 'as an authenticated user' do
+    let(:user) { FactoryGirl.create(:user) }
 
-  scenario 'User creates a valid meme' do
-    meme = FactoryGirl.create(:meme)
+    before :each do
+      sign_in_as(user)
+    end
 
-    visit new_meme_path
+    scenario 'User creates a valid meme' do
+      meme = FactoryGirl.create(:meme)
 
-    fill_in 'Name', with: meme.name
-    fill_in 'Url', with: meme.url
-    fill_in 'Description', with: meme.description
-    click_on 'Create Meme'
+      visit new_meme_path
 
-    expect(page).to have_content("Creates teh meme!!!")
-    expect(page).to have_content(meme.name)
-    expect(page).to have_content(meme.description)
-    expect(page).to have_content(meme.average_rating)
-  end
+      fill_in 'Name', with: meme.name
+      fill_in 'Url', with: meme.url
+      fill_in 'Description', with: meme.description
+      click_on 'Create Meme'
 
-  scenario 'User doesn\'t fill in form! ooo no\'s' do
-    visit new_meme_path
-    click_on 'Create Meme'
+      expect(page).to have_content("Creates teh meme!!!")
+      expect(page).to have_content(meme.name)
+      expect(page).to have_content(meme.description)
+      expect(page).to have_content(meme.average_rating)
+    end
 
-    expect(page).to have_content("Whoopsie Goldberg. Such trouble.")
+    scenario 'User doesn\'t fill in form! ooo no\'s' do
+      visit new_meme_path
+      click_on 'Create Meme'
+
+      expect(page).to have_content("Whoopsie Goldberg. Such trouble.")
+    end
   end
 end

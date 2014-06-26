@@ -3,14 +3,10 @@ require 'rails_helper'
 feature 'User creates a new review for a specific meme' do
   scenario 'User creates a new review' do
     meme = FactoryGirl.create(:meme)
+
     user = FactoryGirl.create(:user)
 
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Done'
+    sign_in_as(user)
 
     visit meme_path(meme)
 

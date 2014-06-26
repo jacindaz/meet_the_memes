@@ -4,5 +4,6 @@ FactoryGirl.define do
     title "LOL"
     body "This made me lol so hard!"
     meme
+    user
   end
 end
