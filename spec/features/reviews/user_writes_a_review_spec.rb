@@ -10,18 +10,18 @@ feature 'User creates a new review for a specific meme' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
 
-    click_button 'Sign in'
+    click_button 'Done'
 
     visit meme_path(meme)
 
-    fill_in 'Rating', with: 5
+    select 5, from: 'Rating'
     fill_in 'Title', with: 'excellent meme'
-    fill_in 'Body', with: 'good stuff'
+    fill_in 'Body', with: 'good stuff very insightful meme here'
 
     click_button 'Submit Review'
 
     expect(page).to have_content('excellent meme')
-    expect(page).to have_content('good stuff')
+    expect(page).to have_content('good stuff very insightful meme here')
     expect(page).to have_content('5')
 
     expect(meme.reviews.count).to eq(1)
