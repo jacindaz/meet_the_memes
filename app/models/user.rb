@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :memes
 
   validates :email, :password, :password_confirmation, :username, presence: true
