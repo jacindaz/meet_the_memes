@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User deletes a meme' do 
+feature 'User deletes a meme' do
 
   scenario 'User deletes a meme' do
     meme = FactoryGirl.create(:meme)
