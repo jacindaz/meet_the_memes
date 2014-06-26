@@ -1,19 +1,18 @@
 class VotesController < ApplicationController
 
-  def new
-    @vote = Vote.new
-  end
-
   def create
     @review = Review.find(params[:id])
-    @vote = Vote.find(votes_params)
+    @vote = Vote.new(votes_params)
     @vote.review = @review
+    @vote.user = current_user
+    @meme = @review.meme
 
     if @vote.save
       flash[:notice] = "Your vote very thankful."
-      redirect_to meme_path(@vote.review.meme)
+      redirect_to meme_path(@meme)
     else
-      flash[:notice] = "Much fail, your vote saved not."
+      flash.now[:notice] = "Much fail, your vote saved not."
+      render :'memes/show'
     end
   end
 
