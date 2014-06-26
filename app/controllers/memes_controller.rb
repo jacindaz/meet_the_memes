@@ -19,7 +19,7 @@ class MemesController < ApplicationController
     @meme.user = current_user
 
     if @meme.save
-      flash[:notice] = "Creates the meme!!!"
+      flash[:notice] = "Creates teh meme!!!"
       redirect_to meme_path(@meme)
     else
       flash.now[:notice] = "Whoopsie Goldberg. Such trouble."

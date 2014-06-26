@@ -1,13 +1,11 @@
 class VotesController < ApplicationController
 
   def create
-    binding.pry
     @review = Review.find(params[:review_id])
     @vote = Vote.new(votes_params)
     @vote.review = @review
     @vote.user = current_user
     @meme = @review.meme
-    binding.pry
 
     if @vote.save
       flash[:notice] = "Your vote very thankful."
