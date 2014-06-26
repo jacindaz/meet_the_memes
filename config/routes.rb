@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
+  devise_for :users
   root to: "memes#index"
 
   resources :memes do
-    resources :reviews, only: [:index, :show, :new, :create, :edit, :destroy]
+    resources :reviews, only: [:create, :edit, :update, :destroy]
   end
+
 end
 
