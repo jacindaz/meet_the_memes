@@ -8,8 +8,8 @@ feature 'User sees a list of memes on the home page.' do
 
     memes.each do |meme|
       expect(page).to have_content(meme.name)
+      expect(page).to have_content(meme.average_rating)
+      expect(page).to have_xpath("//img[contains(@src, default.jpg)]")
     end
-
   end
-
 end
