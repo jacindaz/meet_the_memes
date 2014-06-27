@@ -1,5 +1,5 @@
 class Meme < ActiveRecord::Base
-  mount_uploader :picture, PictureUploader
+  mount_uploader :picture, MemePictureUploader
 
   has_many :reviews
 
@@ -7,8 +7,9 @@ class Meme < ActiveRecord::Base
 
   def average_rating
     if self.reviews.count > 0
-      sum = self.reviews.inject(0) {|total, each| total += each.to_i}
-      sum / self.reviews.count
+      self.average(:average_rating)
+    else
+      "So wow. No rating. Such rating."
     end
   end
 end

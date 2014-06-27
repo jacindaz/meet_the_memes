@@ -7,11 +7,11 @@
 </div>
 
 <div>
-  <img id='picture' src="<%= @meme.picture %>" alt="Sorry image can't be loaded"/>
+  <%= image_tag @meme.picture %>
 </div>
 
 <div>
-  <p> This meme came from <a target='_blank' href='<%= @meme.url %>'/> <%= @meme.url %> </a></p>
+  <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
 </div>
 
 <div>
