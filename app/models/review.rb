@@ -20,6 +20,14 @@ class Review < ActiveRecord::Base
     too_long: "Must have less than %{count} words."
   }
 
+  def calculate_popularity
+    sum = 0
+    votes.all.each do |vote|
+      sum += vote.value
+    end
+    self.update(popularity: sum)
+  end
+
   def has_vote_from?(user)
     votes.find_by(user_id: user.id).present?
   end

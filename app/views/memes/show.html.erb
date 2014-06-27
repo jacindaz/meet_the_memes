@@ -15,7 +15,7 @@
 </div>
 
 <div>
-  <% @meme.reviews.each do |review| %>
+  <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
     <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
     <p><%= review.body %></p>
 
