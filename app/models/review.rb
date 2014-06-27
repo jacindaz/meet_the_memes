@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :meme
   belongs_to :user
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   validates_presence_of :meme, :rating, :title, :body
   validates_uniqueness_of :title
