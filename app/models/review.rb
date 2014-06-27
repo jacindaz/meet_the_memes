@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :meme
   belongs_to :user
+  has_many :votes
 
   validates_presence_of :meme, :rating, :title, :body
   validates_uniqueness_of :title
@@ -20,11 +21,11 @@ class Review < ActiveRecord::Base
   }
 
   def has_vote_from?(user)
-    Vote.find_by(user_id: user.id, review_id: self.id).present?
+    votes.find_by(user_id: user.id).present?
   end
 
   def vote_from(user)
-    Vote.find_by(user_id: user.id, review_id: self.id)
+    votes.find_by(user_id: user.id)
   end
 
 end
