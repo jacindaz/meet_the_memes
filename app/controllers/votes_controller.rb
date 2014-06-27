@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
 
   def create
+
     @review = Review.find(params[:review_id])
     @vote = Vote.new(votes_params)
     @vote.review = @review
@@ -17,16 +18,23 @@ class VotesController < ApplicationController
   end
 
   def update
-    @vote = Vote.find(params[:vote_id])
+
+    @vote = Vote.find(params[:id])
+    @review = Review.find(params[:review_id])
+
     @meme = @vote.review.meme
 
-    if @vote.update(votes_params)
-      flash[:notice] = "Change vote such update."
-      redirect_to meme_path(@meme)
+    if current_user.votes.where(review_id: @review).exists?
+      if @vote.update(votes_params)
+        flash[:notice] = "Change vote such update."
+        redirect_to meme_path(@meme)
+      end
     else
-      flash.now[:notice] = "Much sorrow, vote not saved."
-      render :'memes/show'
+        flash.now[:notice] = "Much sorrow, vote not saved."
+        render :'memes/show'
     end
+
+
   end
 
   def votes_params

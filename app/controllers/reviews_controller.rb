@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.meme = @meme
     @review.user = current_user
+    binding.pry
 
     if @review.save
       flash[:notice] = "Success!"

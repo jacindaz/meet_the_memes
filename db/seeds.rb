@@ -10,9 +10,9 @@
 # 	description: 'poop'
 # 	)
 
-Review.create!(
-  meme_id: 1,
-  rating: 5,
-  title: "This meme is awesome",
-  body: "I repeat: this meme is awesome."
-  )
+# Review.create!(
+#   meme_id: 1,
+#   rating: 5,
+#   title: "This meme is awesome",
+#   body: "I repeat: this meme is awesome."
+#   )

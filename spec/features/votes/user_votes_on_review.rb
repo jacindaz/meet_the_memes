@@ -33,7 +33,9 @@ feature 'User votes on a particular review' do
     end
 
     scenario 'user changes vote' do
-      vote = FactoryGirl.create(:vote, value: 1)
+
+      vote = FactoryGirl.create(:vote, user: user)
+
       visit meme_path(vote.review.meme)
 
       click_on "Vote Down"

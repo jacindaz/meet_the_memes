@@ -18,4 +18,13 @@ class Review < ActiveRecord::Base
     too_short: "Must have at least %{count} words.",
     too_long: "Must have less than %{count} words."
   }
+
+  def has_vote_from?(user)
+    Vote.find_by(user_id: user.id, review_id: self.id).present?
+  end
+
+  def vote_from(user)
+    Vote.find_by(user_id: user.id, review_id: self.id)
+  end
+
 end

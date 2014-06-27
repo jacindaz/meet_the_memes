@@ -18,8 +18,25 @@
   <% @meme.reviews.each do |review| %>
     <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
     <p><%= review.body %></p>
-    <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %>
-    <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
+
+    <% if review.has_vote_from?(current_user) %>
+      <% @current_vote = review.vote_from(current_user) %>
+      <p><strong>Vote: </strong>
+        <% if @current_vote.value == -1 %>
+          You've downvoted this review. |
+          <%= link_to "Vote Up", meme_review_vote_path(@meme, review, @current_vote, vote: {value: 1}), method: :patch %>
+        <% elsif @current_vote.value == 1 %>
+          You've upvoted this review. |
+          <%= link_to "Vote Down", meme_review_vote_path(@meme, review, @current_vote, vote: {value: -1}), method: :patch %>
+        <% end %>
+      </p>
+    <% else %>
+      <p><strong>Vote: </strong>
+        <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %> |
+        <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
+      </p>
+    <% end %>
+
   <% end %>
 </div>
 
