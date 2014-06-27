@@ -34,8 +34,6 @@ gem 'fog'
 
 gem 'mini_magick'
 
-gem 'dotenv-rails'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -52,6 +50,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 

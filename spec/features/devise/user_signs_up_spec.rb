@@ -68,4 +68,6 @@ feature 'User signs up successfully, doge memes aplenty.' do
     expect(page).to have_content('too short')
   end
 
+  
+
 end

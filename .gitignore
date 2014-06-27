@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore uploaded files in test/development
-/public/public/uploads
+/public/uploads
 
 #Ignore AWS keys
 /.env

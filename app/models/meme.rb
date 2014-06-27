@@ -3,5 +3,5 @@ class Meme < ActiveRecord::Base
 
   has_many :reviews
 
-  validates_presence_of :name, :url
+  validates :name, presence: true
 end
