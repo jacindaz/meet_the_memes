@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :meme
   belongs_to :user
+  has_many :votes, dependent: :destroy
 
   validates_presence_of :meme, :rating, :title, :body
   validates_uniqueness_of :title
@@ -18,4 +19,21 @@ class Review < ActiveRecord::Base
     too_short: "Must have at least %{count} words.",
     too_long: "Must have less than %{count} words."
   }
+
+  def calculate_popularity
+    sum = 0
+    votes.all.each do |vote|
+      sum += vote.value
+    end
+    self.update(popularity: sum)
+  end
+
+  def has_vote_from?(user)
+    votes.find_by(user_id: user.id).present?
+  end
+
+  def vote_from(user)
+    votes.find_by(user_id: user.id)
+  end
+
 end

@@ -9,4 +9,12 @@ describe Review do
   it { should validate_uniqueness_of(:title) }
   it { should validate_uniqueness_of(:user_id).scoped_to(:meme_id) }
 
+  it 'updates review popularity when voting' do
+    review = FactoryGirl.create(:review)
+    expect(review.popularity).to eq(0)
+    vote = FactoryGirl.create(:vote, value: 1, review_id: review.id)
+    review.calculate_popularity
+    expect(review.popularity).to eq(1)
+  end
+
 end
