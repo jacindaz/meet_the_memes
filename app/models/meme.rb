@@ -1,6 +1,13 @@
 class Meme < ActiveRecord::Base
-  belongs_to :user
-  has_many :reviews
+  mount_uploader :picture, MemePictureUploader
 
-  validates_presence_of :name, :url
+  belongs_to :user
+  has_many :reviews, dependent: :destroy
+
+  validates :name, presence: true
+
+  def update_average_rating
+    self.average_rating = self.reviews.average(:rating)
+  end
+
 end

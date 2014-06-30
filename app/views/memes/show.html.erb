@@ -1,13 +1,30 @@
 <div>
-  <h1><%= @meme.name %> - Average User Rating: <%= @meme.average_rating %></h1>
+  <h1>
+    <%= @meme.name %> - Average User Rating:
+    <% if @meme.average_rating != nil %>
+      <%= @meme.average_rating %>
+    <% else %>
+      No has rating!
+    <% end %>
+  </h1>
+</div>
+
+<% if @meme.user == current_user %>
+  <div>
+    <%= link_to "Edit", edit_meme_path(@meme) %>
+  </div>
+
+  <div>
+    <%= link_to "Delete", meme_path(@meme), method: :delete %>
+  </div>
+<% end %>
+
+<div>
+  <%= image_tag @meme.picture %>
 </div>
 
 <div>
-  <%= link_to "Delete", meme_path(@meme), method: :delete %>
-</div>
-
-<div>
-  <img src="<%= @meme.url %>" alt="Sorry image can't be loaded">
+  <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
 </div>
 
 <div>
@@ -15,9 +32,28 @@
 </div>
 
 <div>
-  <% @meme.reviews.each do |review| %>
+  <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
     <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
     <p><%= review.body %></p>
+
+    <% if review.has_vote_from?(current_user) %>
+      <% @current_vote = review.vote_from(current_user) %>
+      <p><strong>Vote: </strong>
+        <% if @current_vote.value == -1 %>
+          You've downvoted this review. |
+          <%= link_to "Vote Up", meme_review_vote_path(@meme, review, @current_vote, vote: {value: 1}), method: :patch %>
+        <% elsif @current_vote.value == 1 %>
+          You've upvoted this review. |
+          <%= link_to "Vote Down", meme_review_vote_path(@meme, review, @current_vote, vote: {value: -1}), method: :patch %>
+        <% end %>
+      </p>
+    <% else %>
+      <p><strong>Vote: </strong>
+        <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %> |
+        <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
+      </p>
+    <% end %>
+
   <% end %>
 </div>
 
@@ -31,5 +67,3 @@
   <%= f.input :body, placeholder: "Do you love this meme???" %>
   <%= f.button :submit, "Submit Review" %>
 <% end %>
-
-

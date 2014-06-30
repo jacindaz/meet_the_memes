@@ -17,3 +17,7 @@
 
 # Ignore development images.
 /public/uploads
+
+#Ignore AWS keys
+/.env
+

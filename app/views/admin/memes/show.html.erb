@@ -1,0 +1,25 @@
+<div>
+  <h1>Admin</h1>
+  <h2><%= @meme.name %> - Average User Rating: <%= @meme.average_rating %></h2>
+</div>
+
+<div>
+  <%= link_to "Delete Meme", admin_meme_path(@meme), method: :delete %>
+</div>
+
+<div>
+  <img src="<%= @meme.url %>">
+</div>
+
+<div>
+  <p><%= @meme.description %></p>
+</div>
+
+<div>
+  <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
+    <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
+    <p><%= review.body %></p><br>
+    <%= link_to "Delete Review", admin_review_path(review), method: :delete %>
+
+  <% end %>
+</div>

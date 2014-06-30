@@ -26,7 +26,24 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'simple_form'
+gem 'kaminari'
 
+gem 'carrierwave'
+
+gem 'fog'
+
+gem 'mini_magick'
+
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+
+# Use debugger
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
@@ -35,6 +52,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 
