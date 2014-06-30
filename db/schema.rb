@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627220825) do
+ActiveRecord::Schema.define(version: 20140627233232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "memes", force: true do |t|
-    t.string   "url",            null: false
+    t.string   "url"
     t.string   "name",           null: false
     t.text     "description"
     t.float    "average_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "picture"
   end
 
   create_table "reviews", force: true do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140627220825) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
+    t.string   "profile_picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

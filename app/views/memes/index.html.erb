@@ -6,6 +6,7 @@
   <table>
     <thead>
       <tr>
+        <th>Thumbnail</th>
         <th>Name</th>
         <th>Average Rating</th>
       </tr>
@@ -13,6 +14,7 @@
     <tbody>
       <% @memes.each do |meme| %>
       <tr>
+        <td><img src=<%= "#{meme.picture.thumbnail}" %>/></td>
         <td><%= meme.name %></td>
         <td><%= meme.average_rating %></td>
       </tr>
