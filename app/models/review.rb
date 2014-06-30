@@ -18,4 +18,10 @@ class Review < ActiveRecord::Base
     too_short: "Must have at least %{count} words.",
     too_long: "Must have less than %{count} words."
   }
+
+  after_create :notify_user
+
+  def notify_user
+    Notification.review_posted_notification(self).deliver
+  end
 end
