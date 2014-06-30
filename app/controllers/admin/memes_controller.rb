@@ -1,7 +1,7 @@
 class Admin::MemesController < Admin::BaseController
 
   def index
-    @memes = Meme.order(:created_at)
+    @memes = Meme.order(:created_at).page(params[:page])
   end
 
   def show

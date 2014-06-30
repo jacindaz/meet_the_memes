@@ -9,7 +9,6 @@ feature 'Authorized admin can perform appropriate tasks' do
   scenario 'Authorized admin promotes a user' do
     user2 = FactoryGirl.create(:user)
     visit admin_users_path
-    save_and_open_page
     click_link 'Promote User'
 
     expect(page).to have_content('Such promotion!')
