@@ -1,7 +1,7 @@
 class MemesController < ApplicationController
 
   def index
-    @memes = Meme.order(:created_at).limit(10)
+    @memes = Meme.order(:created_at).page(params[:page])
   end
 
   def show
