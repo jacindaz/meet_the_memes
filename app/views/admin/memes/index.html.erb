@@ -1,12 +1,12 @@
 <div>
-  <h1> Behold Meme </h1>
+  <h1>Admin</h1>
+  <h2>Behold Meme</h2>
 </div>
 
 <div>
   <table>
     <thead>
       <tr>
-        <th>Thumbnail</th>
         <th>Name</th>
         <th>Average Rating</th>
       </tr>
@@ -14,7 +14,6 @@
     <tbody>
       <% @memes.each do |meme| %>
       <tr>
-        <td><img src=<%= "#{meme.picture.thumbnail}" %>/></td>
         <td><%= meme.name %></td>
         <td><%= meme.average_rating %></td>
       </tr>
@@ -22,5 +21,3 @@
     </tbody>
   </table>
 </div>
-
-<%= paginate @memes %>

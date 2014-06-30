@@ -1,5 +1,12 @@
 <div>
-  <h1><%= @meme.name %> - Average User Rating: <%= @meme.average_rating %></h1>
+  <h1>
+    <%= @meme.name %> - Average User Rating:
+    <% if @meme.average_rating != nil %>
+      <%= @meme.average_rating %>
+    <% else %>
+      No has rating!
+    <% end %>
+  </h1>
 </div>
 
 <% if @meme.user == current_user %>
@@ -13,7 +20,11 @@
 <% end %>
 
 <div>
-  <img src="<%= @meme.url %>" alt="Sorry image can't be loaded">
+  <%= image_tag @meme.picture %>
+</div>
+
+<div>
+  <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
 </div>
 
 <div>

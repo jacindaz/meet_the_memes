@@ -1,5 +1,4 @@
 class MemesController < ApplicationController
-
   def index
     @memes = Meme.order(:created_at).page(params[:page])
   end
@@ -17,12 +16,13 @@ class MemesController < ApplicationController
   def create
     @meme = Meme.new(meme_params)
     @meme.user = current_user
+    @meme.average_rating = nil
 
     if @meme.save
-      flash[:notice] = "Creates teh meme!!!"
+      flash[:notice] = 'Creates teh meme!!!'
       redirect_to meme_path(@meme)
     else
-      flash.now[:notice] = "Whoopsie Goldberg. Such trouble."
+      flash.now[:notice] = 'Whoopsie Goldberg. Such trouble.'
       render :new
     end
   end
@@ -35,10 +35,10 @@ class MemesController < ApplicationController
     @meme = Meme.find(params[:id])
 
     if @meme.update(meme_params)
-      flash[:notice] = "Updates teh meme!"
+      flash[:notice] = 'Updates teh meme!'
       redirect_to meme_path(@meme)
     else
-      flash.now[:notice] = "Whoopsie Goldberg. Such trouble."
+      flash.now[:notice] = 'Whoopsie Goldberg. Such trouble.'
       render :edit
     end
   end
@@ -47,10 +47,10 @@ class MemesController < ApplicationController
     @meme = Meme.find(params[:id])
 
     if @meme.destroy
-      flash[:notice] = "Wow. Much destroy."
+      flash[:notice] = 'Wow. Much destroy.'
       redirect_to memes_path
     else
-      flash.now[:notice] = "Whoopsie Goldberg. Such trouble."
+      flash.now[:notice] = 'Whoopsie Goldberg. Such trouble.'
       render :show
     end
   end
@@ -58,7 +58,6 @@ class MemesController < ApplicationController
   private
 
   def meme_params
-    params.require(:meme).permit(:name, :url, :description)
+    params.require(:meme).permit(:name, :url, :description, :picture)
   end
-
 end
