@@ -8,10 +8,10 @@
   </head>
   <body>
     <% if flash.any? %>
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
+      <div class="notice"><%= flash[:notice] %></div>
+      <div class="alert"><%= flash[:alert] %></div>
     <% end %>
-    
+
     <% if user_signed_in? %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
     <% else %>

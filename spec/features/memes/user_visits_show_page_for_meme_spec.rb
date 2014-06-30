@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 feature 'User visits a show page for meme' do
+  let(:user) { FactoryGirl.create(:user) }
+
 
   scenario 'User specific meme deets' do
     meme = FactoryGirl.create(:meme)
-    #image = (File.join(Rails.root, '/spec/fixtures/images/captain_dogerica.jpg'))
 
+    sign_in_as(user)
     visit meme_path(meme)
 
     expect(page).to have_content(meme.name)

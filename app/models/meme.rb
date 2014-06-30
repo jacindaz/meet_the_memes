@@ -1,7 +1,8 @@
 class Meme < ActiveRecord::Base
   mount_uploader :picture, MemePictureUploader
 
-  has_many :reviews
+  belongs_to :user
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
 

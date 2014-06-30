@@ -5,6 +5,8 @@ class MemesController < ApplicationController
 
   def show
     @meme = Meme.find(params[:id])
+    @review = Review.new
+    @vote = Vote.new
   end
 
   def new
@@ -13,6 +15,7 @@ class MemesController < ApplicationController
 
   def create
     @meme = Meme.new(meme_params)
+    @meme.user = current_user
 
     if @meme.save
       flash[:notice] = 'Creates teh meme!!!'
