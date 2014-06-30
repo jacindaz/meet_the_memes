@@ -2,9 +2,15 @@
   <h1><%= @meme.name %> - Average User Rating: <%= @meme.average_rating %></h1>
 </div>
 
-<div>
-  <%= link_to "Delete", meme_path(@meme), method: :delete %>
-</div>
+<% if @meme.user == current_user %>
+  <div>
+    <%= link_to "Edit", edit_meme_path(@meme) %>
+  </div>
+
+  <div>
+    <%= link_to "Delete", meme_path(@meme), method: :delete %>
+  </div>
+<% end %>
 
 <div>
   <img src="<%= @meme.url %>" alt="Sorry image can't be loaded">
