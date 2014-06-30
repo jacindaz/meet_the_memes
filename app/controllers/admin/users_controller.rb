@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    @users = User.order(:admin, :username).page(params[:page])
+    @users = User.order(:admin, :username).page(params[:page]).per(25)
     @user = User.find(params[:id])
 
     if @user.update_attribute(:admin, true)
