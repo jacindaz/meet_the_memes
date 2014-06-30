@@ -2,11 +2,11 @@ class Admin::UsersController < Admin::BaseController
   before_filter :authorize
 
   def index
-    @users = User.order(:admin, :username)
+    @users = User.order(:admin, :username).page(params[:page]).per(25)
   end
 
   def update
-    @users = User.order(:admin, :username)
+    @users = User.order(:admin, :username).page(params[:page])
     @user = User.find(params[:id])
 
     if @user.update_attribute(:admin, true)
