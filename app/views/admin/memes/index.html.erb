@@ -1,0 +1,23 @@
+<div>
+  <h1>Admin</h1>
+  <h2>Behold Meme</h2>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Average Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @memes.each do |meme| %>
+      <tr>
+        <td><%= meme.name %></td>
+        <td><%= meme.average_rating %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
