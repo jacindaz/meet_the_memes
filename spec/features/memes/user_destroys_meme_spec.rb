@@ -4,7 +4,7 @@ feature 'User deletes a meme' do
   let(:user) { FactoryGirl.create(:user) }
 
   scenario 'User deletes a meme' do
-    meme = FactoryGirl.create(:meme)
+    meme = FactoryGirl.create(:meme, user: user)
 
     sign_in_as(user)
     visit meme_path(meme)

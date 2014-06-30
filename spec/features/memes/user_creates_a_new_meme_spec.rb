@@ -22,8 +22,8 @@ feature 'User creates a new meme' do
       expect(page).to have_content("Creates teh meme!!!")
       expect(page).to have_content(meme.name)
       expect(page).to have_content(meme.description)
-      expect(page).to have_content(meme.average_rating)
-       expect(page).to have_xpath("//img[contains(@src, 'captain_dogerica.jpg' )]")
+      expect(page).to have_content('No has rating!')
+      expect(page).to have_xpath("//img[contains(@src, 'captain_dogerica.jpg' )]")
     end
 
 
