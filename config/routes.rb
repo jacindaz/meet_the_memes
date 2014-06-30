@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :memes, only: [:index, :show, :destroy]
     resources :reviews, only: :destroy
+    resources :users, only: [:index, :destroy, :update]
   end
 
   resources :memes do
