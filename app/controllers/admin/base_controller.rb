@@ -1,4 +1,5 @@
 class Admin::BaseController < ApplicationController
+  before_filter :authorize
 
   def authorize
     if user_signed_in?

@@ -1,8 +1,7 @@
 class Admin::MemesController < Admin::BaseController
-  before_filter :authorize
 
   def index
-    @memes = Meme.order(:created_at).limit(10)
+    @memes = Meme.order(:created_at)
   end
 
   def show
