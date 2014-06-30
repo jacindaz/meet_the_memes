@@ -2,7 +2,7 @@
   <h1><%= @meme.name %> - Average User Rating: <%= @meme.average_rating %></h1>
 </div>
 
-<% if @meme.user = current_user %>
+<% if @meme.user == current_user %>
   <div>
     <%= link_to "Edit", edit_meme_path(@meme) %>
   </div>
