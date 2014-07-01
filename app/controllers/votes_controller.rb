@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:create, :update]
   def create
     @review = Review.find(params[:review_id])
     @vote = Vote.new(votes_params)

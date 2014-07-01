@@ -26,7 +26,6 @@ feature 'User creates a new meme' do
       expect(page).to have_xpath("//img[contains(@src, 'captain_dogerica.jpg' )]")
     end
 
-
     scenario 'User doesn\'t fill in form! ooo no\'s' do
       visit new_meme_path
       click_on 'Create Meme'
