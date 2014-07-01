@@ -2,11 +2,8 @@ class Admin::BaseController < ApplicationController
   before_filter :authorize
 
   def authorize
-    if user_signed_in?
-      if current_user.admin == false
-        flash[:alert] = "No has authorization."
-        redirect_to memes_path
-      end
+    if !current_user || current_user.admin == false
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 
