@@ -3,6 +3,6 @@ class Notification < ActionMailer::Base
 
   def review_posted(review)
     @review = review
-    mail(to: "#{@review.meme.user.email}", subject: 'Someone reviewed your meme!')
+    mail(to: @review.meme.user.email, subject: 'Someone reviewed your meme!')
   end
 end
