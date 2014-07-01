@@ -21,6 +21,11 @@ class Review < ActiveRecord::Base
   }
 
   after_save :update_meme_rating
+  after_create :notify_user
+
+  def notify_user
+    Notification.review_posted(self).deliver
+  end
 
   def update_meme_rating
     self.meme.update_average_rating

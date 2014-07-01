@@ -1,5 +1,6 @@
 CarrierWave.configure do |config|
 
+  #config.enable_processing = true
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     config.fog_credentials = {
@@ -10,7 +11,6 @@ CarrierWave.configure do |config|
     config.fog_directory  = ENV['S3_BUCKET']
     config.storage = :fog
   else
-    config.enable_processing = false
     config.storage = :file
   end
 

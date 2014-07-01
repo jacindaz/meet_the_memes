@@ -15,7 +15,7 @@
 /log/*.log
 /tmp
 
-# Ignore uploaded files in test/development
+# Ignore development images.
 /public/uploads
 
 #Ignore AWS keys

@@ -14,9 +14,10 @@ feature 'Authorized admin can visit admin paths' do
   scenario 'Unauthorized user is denied from admin path' do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
-    visit admin_memes_path
+    expect{visit admin_memes_path}.to raise_error(ActionController::RoutingError)
+  end
 
-    expect(page).to have_content('No has authorization.')
-    expect(page).to have_content('Behold Meme')
+  scenario 'Not signed in user denied from admin path' do
+    expect{visit admin_memes_path}.to raise_error(ActionController::RoutingError)
   end
 end

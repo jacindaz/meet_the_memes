@@ -27,13 +27,12 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'simple_form'
 gem 'kaminari'
-
 gem 'carrierwave'
-
 gem 'fog'
-
 gem 'mini_magick'
 gem 'foundation-rails'
+
+gem 'mandrill-api'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -54,6 +53,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'email_spec'
 end
 
 
