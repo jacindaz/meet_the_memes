@@ -1,4 +1,4 @@
-require_relative '../mailers/notifications.rb'
+require_relative '../mailers/notification.rb'
 
 class Review < ActiveRecord::Base
   belongs_to :meme
