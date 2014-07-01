@@ -14,8 +14,8 @@
     <thead>
       <tr>
         <th>Thumbnail</th>
-        <th>Name</th>
-        <th>Average Rating</th>
+        <th><%= link_to 'Name', memes_path(order: :name)%></th>
+        <th><%= link_to 'Average Rating', memes_path(order: :average_rating)%></th>
       </tr>
     </thead>
     <tbody>

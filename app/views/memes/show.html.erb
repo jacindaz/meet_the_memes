@@ -8,7 +8,7 @@
     <% end %>
   </h1>
 </div>
-
+<p>Added by: <%= @meme.user.username %></p>
 <% if @meme.user == current_user %>
   <div>
     <%= link_to "Edit", edit_meme_path(@meme) %>
@@ -33,37 +33,41 @@
 
 <div>
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
-    <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
+    <h4><%= review.title %><i>(<%= review.rating %>)</i></h4>
+    <p>By: <%= review.user.username %></p>
     <p><%= review.body %></p>
 
-    <% if review.has_vote_from?(current_user) %>
-      <% @current_vote = review.vote_from(current_user) %>
-      <p><strong>Vote: </strong>
-        <% if @current_vote.value == -1 %>
-          You've downvoted this review. |
-          <%= link_to "Vote Up", meme_review_vote_path(@meme, review, @current_vote, vote: {value: 1}), method: :patch %>
-        <% elsif @current_vote.value == 1 %>
-          You've upvoted this review. |
-          <%= link_to "Vote Down", meme_review_vote_path(@meme, review, @current_vote, vote: {value: -1}), method: :patch %>
-        <% end %>
-      </p>
-    <% else %>
-      <p><strong>Vote: </strong>
-        <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %> |
-        <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
-      </p>
+    <% if review.user != current_user %>
+      <% if review.has_vote_from?(current_user) %>
+        <% @current_vote = review.vote_from(current_user) %>
+        <p><strong>Vote: </strong>
+          <% if @current_vote.value == -1 %>
+            You've downvoted this review. |
+            <%= link_to "Vote Up", meme_review_vote_path(@meme, review, @current_vote, vote: {value: 1}), method: :patch %>
+          <% elsif @current_vote.value == 1 %>
+            You've upvoted this review. |
+            <%= link_to "Vote Down", meme_review_vote_path(@meme, review, @current_vote, vote: {value: -1}), method: :patch %>
+          <% end %>
+        </p>
+      <% else %>
+        <p><strong>Vote: </strong>
+          <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %> |
+          <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
+        </p>
+      <% end %>
     <% end %>
 
   <% end %>
 </div>
 
 <hr>
-
-<h3>Submit a Review</h3>
-<%= simple_form_for [@meme, @review] do |f| %>
-  <%= f.input :title, input_html: { maxlength: 90 } %>
-  <%= f.label :rating %>
-  <%= f.select :rating, [5,4,3,2,1] %>
-  <%= f.input :body, placeholder: "Do you love this meme???" %>
-  <%= f.button :submit, "Submit Review" %>
+<% if !@meme.has_review_from?(current_user) %>
+  <h3>Submit a Review</h3>
+  <%= simple_form_for [@meme, @review] do |f| %>
+    <%= f.input :title, input_html: { maxlength: 90 } %>
+    <%= f.label :rating %>
+    <%= f.select :rating, [5,4,3,2,1] %>
+    <%= f.input :body, placeholder: "Do you love this meme???" %>
+    <%= f.button :submit, "Submit Review" %>
+  <% end %>
 <% end %>

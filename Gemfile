@@ -27,11 +27,8 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'simple_form'
 gem 'kaminari'
-
 gem 'carrierwave'
-
 gem 'fog'
-
 gem 'mini_magick'
 
 gem 'mandrill-api'

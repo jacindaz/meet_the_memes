@@ -7,11 +7,14 @@ class Meme < ActiveRecord::Base
   validates :name, presence: true
 
   def update_average_rating
-    self.average_rating = self.reviews.average(:rating)
+    self.update(average_rating: self.reviews.average(:rating))
   end
 
   def self.search(query)
     where('name ILIKE ?', "%#{query}%")
   end
 
+  def has_review_from?(user)
+    reviews.find_by(user_id: user.id).present?
+  end
 end
