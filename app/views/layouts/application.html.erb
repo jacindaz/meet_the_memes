@@ -10,11 +10,8 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-<<<<<<< HEAD
 
-  <body>
 
-=======
   <body>
    <div class="nav">
       <%= link_to 'All Memes', memes_path %>
@@ -37,8 +34,7 @@
       <div class="alert"><%= flash[:alert] %></div>
     <% end %>
 
->>>>>>> 6d3134e3c7af9367ebaf5d07c074cfea9734baf9
     <%= yield %>
-    <%= javascript_include_tag "application" %>
+
   </body>
 </html>
