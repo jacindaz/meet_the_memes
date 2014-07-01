@@ -20,7 +20,7 @@ class Review < ActiveRecord::Base
     too_long: "Must have less than %{count} words."
   }
 
-  after_save :update_meme_rating
+  after_create :update_meme_rating
 
   def update_meme_rating
     self.meme.update_average_rating

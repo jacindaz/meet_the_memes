@@ -7,7 +7,11 @@ class MemesController < ApplicationController
       @memes = Meme.all
     end
 
-    @memes = @memes.order(:created_at).page(params[:page])
+    if params[:order]
+      @memes = @memes.order(params[:order]).page(params[:page])
+    else
+      @memes = @memes.order(:created_at).page(params[:page])
+    end
   end
 
   def show
