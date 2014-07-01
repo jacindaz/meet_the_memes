@@ -1,13 +1,19 @@
 class MemesController < ApplicationController
 
   def index
+    order_possibilities = ["name", "average_rating"]
+
     if params[:search]
       @memes = Meme.search(params[:search])
     else
       @memes = Meme.all
     end
 
-    @memes = @memes.order(:created_at).page(params[:page])
+    if order_possibilities.include?(params[:order])
+      @memes = @memes.order(params[:order]).page(params[:page])
+    else
+      @memes = @memes.order(:created_at).page(params[:page])
+    end
   end
 
   def show

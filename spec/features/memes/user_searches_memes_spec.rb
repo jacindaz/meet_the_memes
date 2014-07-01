@@ -4,12 +4,13 @@ feature 'User searches memes.' do
 
   scenario 'Successfully searches.' do
     memes = FactoryGirl.create_list(:meme, 10)
+    meme = memes.pop
 
     visit memes_path
-    fill_in 'search', with: '4'
+    fill_in 'search', with: meme.name
     click_button 'Search'
 
-    expect(page).to have_content('Meowsinkprrrrr 4')
-    expect(page).to_not have_content('Meowsinkprrrrr 1')
+    expect(page).to have_content(meme.name)
+    expect(page).to_not have_content(memes.sample.name)
   end
 end
