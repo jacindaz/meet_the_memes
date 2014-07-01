@@ -1,6 +1,13 @@
 class MemesController < ApplicationController
+
   def index
-    @memes = Meme.order(:created_at).page(params[:page])
+    if params[:search]
+      @memes = Meme.search(params[:search])
+    else
+      @memes = Meme.all
+    end
+
+    @memes = @memes.order(:created_at).page(params[:page])
   end
 
   def show

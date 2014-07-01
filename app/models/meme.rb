@@ -10,4 +10,8 @@ class Meme < ActiveRecord::Base
     self.average_rating = self.reviews.average(:rating)
   end
 
+  def self.search(query)
+    where('name ILIKE ?', "%#{query}%")
+  end
+
 end
