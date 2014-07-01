@@ -20,6 +20,12 @@ class Review < ActiveRecord::Base
     too_long: "Must have less than %{count} words."
   }
 
+  after_create :notify_user
+
+  def notify_user
+    Notification.review_posted(self).deliver
+  end
+
   after_save :update_meme_rating
 
   def update_meme_rating
