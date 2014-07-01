@@ -10,12 +10,4 @@ class Meme < ActiveRecord::Base
     self.average_rating = self.reviews.average(:rating)
   end
 
-  def self.search(search)
-    if search
-      where('name iLIKE ?', "%#{search}%").order(:created_at)
-    else
-      order(:created_at)
-    end
-  end
-
 end
