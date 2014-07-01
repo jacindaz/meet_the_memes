@@ -11,10 +11,8 @@
       <%= link_to 'All Memes', memes_path %>
       <%= link_to 'Add a Meme', new_meme_path %>
 
-      <% if current_user %>
-        <% if current_user.admin %>
-          <%= link_to 'Admin', admin_memes_path %>
-        <% end %>
+      <% if current_user && current_user.admin %>
+        <%= link_to 'Admin', admin_memes_path %>
       <% end %>
 
       <% if user_signed_in? %>
