@@ -21,8 +21,8 @@
     <tbody>
       <% @memes.each do |meme| %>
       <tr>
-        <td><%= image_tag meme.picture.thumbnail %></td>
-        <td><%= meme.name %></td>
+        <td><%= link_to (image_tag meme.picture.thumbnail), meme_path(meme.id) %></td>
+        <td><%= link_to meme.name, meme_path(meme.id) %></td>
         <td><%= meme.average_rating %></td>
       </tr>
       <% end %>
