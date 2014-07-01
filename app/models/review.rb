@@ -1,3 +1,5 @@
+require_relative '../mailers/notifications.rb'
+
 class Review < ActiveRecord::Base
   belongs_to :meme
   belongs_to :user
@@ -20,13 +22,12 @@ class Review < ActiveRecord::Base
     too_long: "Must have less than %{count} words."
   }
 
-<<<<<<< HEAD
   after_create :notify_user
 
   def notify_user
-    Notification.review_posted_notification(self).deliver
+    Notification.review_posted(self).deliver
   end
-=======
+
   after_save :update_meme_rating
 
   def update_meme_rating
@@ -49,5 +50,4 @@ class Review < ActiveRecord::Base
     votes.find_by(user_id: user.id)
   end
 
->>>>>>> master
 end
