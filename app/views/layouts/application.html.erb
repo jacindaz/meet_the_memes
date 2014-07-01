@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title> Meet The Memes </title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
-    <% if flash.any? %>
-      <div class="notice"><%= flash[:notice] %></div>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
 
-    <% if user_signed_in? %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %>
-      <%= link_to 'Sign Up', new_user_registration_path %>
-    <% end %>
+  <body>
 
     <%= yield %>
-
-    <div>
-      <p>Created by Jacinda, Adam, Craig, Dan | Launch Academy 2014</p>
-    </div>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
