@@ -14,4 +14,7 @@ class Meme < ActiveRecord::Base
     where('name ILIKE ?', "%#{query}%")
   end
 
+  def has_review_from?(user)
+    reviews.find_by(user_id: user.id).present?
+  end
 end
