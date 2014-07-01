@@ -53,6 +53,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'email_spec'
 end
 
 
