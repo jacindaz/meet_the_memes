@@ -2,21 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//SCSS variables--------------------------------------------------------------------
+$header-fonts: 'dayposterblackregular', Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+$body-fonts: 'Exo', Consolas, monaco, monospace;
+
+//--------------------------------------------------------------------
 body {
   margin: 2% 10%;
+  background-image:url('../images/meme-background.jpg');
+  font-family: $body-fonts;
 }
 
 .parent {
   background-size: 100%;
-  background-image:url('../images/meme-background.jpg');
-/*  opacity: 0.4;
+/* background-image:url('../images/meme-background.jpg');
+  opacity: 0.4;
   filter: alpha(opacity=40);  For IE8 and earlier
   -moz-opacity: 0.4;
   -khtml-opacity: 0.4;*/
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'dayposterblackregular';
+  font-family: $header-fonts;
 }
 
 .child {
