@@ -1,12 +1,12 @@
 <div>
-  <h1>
+  <h2>
     <%= @meme.name %> - Average User Rating:
     <% if @meme.average_rating != nil %>
       <%= @meme.average_rating %>
     <% else %>
       No has rating!
     <% end %>
-  </h1>
+  </h2>
 </div>
 <p>Added by: <%= @meme.user.username %></p>
 <% if @meme.user == current_user %>
