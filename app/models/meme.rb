@@ -5,6 +5,7 @@ class Meme < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
+  validates :url, presence: true
 
   def update_average_rating
     self.update(average_rating: self.reviews.average(:rating))
