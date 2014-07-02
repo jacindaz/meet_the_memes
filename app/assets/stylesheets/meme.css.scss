@@ -1,3 +1,27 @@
 // Place all the styles related to the meme controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//SCSS variables--------------------------------------------------------------------
+$header-fonts: 'dayposterblackregular', Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+$body-fonts: 'Exo', Consolas, monaco, monospace;
+
+//--------------------------------------------------------------------
+body {
+  margin: 2% 10%;
+  background-image:url('../images/meme-background.jpg');
+  font-family: $body-fonts;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $header-fonts;
+}
+
+.child {
+  background: rgba(255,255,255, .95);
+  padding: 3%;
+  height: 100%;
+}
+.header-text {
+  color: black;
+}

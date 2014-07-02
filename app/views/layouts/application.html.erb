@@ -1,37 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title> Meet The Memes </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet the Memes</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+
+    <link href='http://fonts.googleapis.com/css?family=Exo:300,400' rel='stylesheet' type='text/css'>
   </head>
-  <body>
-   <div class="nav">
-      <%= link_to 'All Memes', memes_path %>
-      <%= link_to 'Add a Meme', new_meme_path %>
 
-      <% if current_user && current_user.admin %>
-        <%= link_to 'Admin', admin_memes_path %>
-      <% end %>
+<body>
+  <div class="parent">
+  <div class="child">
 
-      <% if user_signed_in? %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign In', new_user_session_path %>
-        <%= link_to 'Sign Up', new_user_registration_path %>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="small-6 large-6 columns">
+    <h1 style="float:left;">
+      <%= link_to "Behold Meme", memes_path, class: "header-text" %>
+    </h1>
+  </div>
+  <div class="small-4 large-3 columns">
+    <ul>
+      <li class="has-form" style="list-style:none;float:right;">
+        <% if current_user && current_user.admin %>
+          <%= link_to 'Admin', admin_memes_path, class: "button radius round" %>
+        <% end %>
 
-    <% if flash.any? %>
-      <div class="notice"><%= flash[:notice] %></div>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
+        <% if user_signed_in? %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button radius round"  %>
+        <% else %>
+          <%= link_to 'Sign In', new_user_session_path, class: "button radius round"  %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "button radius round"  %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to 'All Memes', memes_path %></h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="active"><%= link_to 'Add a Meme', new_meme_path %></li>
+        <li class="has-dropdown">
+          <a href="#">Right Button Dropdown</a>
+          <ul class="dropdown">
+            <li><a href="#">First link in dropdown</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Left Nav search bar Section -->
+      <ul class="left">
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <input type="text" placeholder="Find Stuff">
+            </div>
+            <div class="large-4 small-3 columns">
+              <%= form_tag memes_path, method: 'get' do %>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Search", name: nil, class: "alert button expand" %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </nav>
+</div>
+
+<br>
+
+<% if flash.any? %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
 
     <%= yield %>
+  </div>
+  <div>
 
-    <div>
-      <p>Created by Jacinda, Adam, Craig, Dan | Launch Academy 2014</p>
-    </div>
   </body>
 </html>

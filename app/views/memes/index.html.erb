@@ -1,33 +1,17 @@
-<div>
-  <h1> Behold Meme </h1>
-</div>
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+  <% @memes.each do |meme| %>
+    <li>
+      <%= link_to meme.name, meme_path(meme.id) %> (<%= meme.average_rating %>)<br>
+      <%= link_to (image_tag meme.picture.thumbnail), meme_path(meme.id) %>
+    </li>
+  <% end %>
+</ul>
 
-<%= form_tag memes_path, method: 'get' do %>
-  <div>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", name: nil %>
-  </div>
-<% end %>
-
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>Thumbnail</th>
-        <th><%= link_to 'Name', memes_path(order: :name)%></th>
-        <th><%= link_to 'Average Rating', memes_path(order: :average_rating)%></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @memes.each do |meme| %>
-      <tr>
-        <td><%= link_to (image_tag meme.picture.thumbnail), meme_path(meme.id) %></td>
-        <td><%= link_to meme.name, meme_path(meme.id) %></td>
-        <td><%= meme.average_rating %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+  <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+  <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+  <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+  <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+</ul>
 
 <%= paginate @memes %>

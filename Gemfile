@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'foundation-rails'
 
 gem 'mandrill-api'
 
