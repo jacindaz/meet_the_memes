@@ -1,6 +1,5 @@
 CarrierWave.configure do |config|
 
-  #config.enable_processing = true
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     config.fog_credentials = {

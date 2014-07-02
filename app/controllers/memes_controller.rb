@@ -10,7 +10,11 @@ class MemesController < ApplicationController
     end
 
     if order_possibilities.include?(params[:order])
-      @memes = @memes.order(params[:order]).page(params[:page])
+      if params[:order] == "average_rating"
+        @memes = @memes.order("#{params[:order]} DESC").page(params[:page])
+      else
+        @memes = @memes.order(params[:order]).page(params[:page])
+      end
     else
       @memes = @memes.order(:created_at).page(params[:page])
     end
