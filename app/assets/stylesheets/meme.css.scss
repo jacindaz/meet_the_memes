@@ -13,20 +13,12 @@ body {
   font-family: $body-fonts;
 }
 
-.parent {
-  background-size: 100%;
-/* background-image:url('../images/meme-background.jpg');
-  opacity: 0.4;
-  filter: alpha(opacity=40);  For IE8 and earlier
-  -moz-opacity: 0.4;
-  -khtml-opacity: 0.4;*/
-}
-
 h1, h2, h3, h4, h5 {
   font-family: $header-fonts;
 }
 
 .child {
-  background: rgba(255,255,255, 1);
+  background: rgba(255,255,255, .95);
   padding: 3%;
+  height: 100%;
 }

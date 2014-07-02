@@ -1,5 +1,5 @@
 <div>
-  <h1>Creates teh Meme</h1>
+  <h2>Creates teh Meme</h2>
 </div>
 
 <div>
@@ -15,24 +15,25 @@
 <div>
   <%= form_for @meme do |f| %>
     <div>
-      <%= f.label :name %>:
-      <%= f.text_field :name %><br>
+      <%= f.text_field :name, placeholder: "Name teh Meme", class: "error" %><br>
     </div>
+
+    <div class="row collapse">
+      <div class="small-3 large-2 columns">
+        <span class="prefix">http://</span>
+      </div>
+      <div class="small-9 large-10 columns">
+        <%= f.text_field :url, placeholder: "URL", class: "error" %>
+      </div>
+    </div><br>
 
     <div>
-      <%= f.label :url %>:
-      <%= f.text_field :url %><br>
+      <%= f.text_area :description, placeholder: "Such description. Much detail." %><br>
     </div>
 
-    <div>
-      <%= f.label :description %>:
-      <%= f.text_field :description %><br>
-    </div>
+    <div><%= f.label :picture %><%= f.file_field :picture %></div>
 
-    <div><%= f.label :picture %><br />
-      <%= f.file_field :picture %></div>
-
-    <%= f.submit %>
+    <%= f.submit 'Submit teh Meme', class: "button radius round" %>
 
   <% end %>
 

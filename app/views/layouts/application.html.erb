@@ -23,14 +23,14 @@
     <ul>
       <li class="has-form" style="list-style:none;float:right;">
         <% if current_user && current_user.admin %>
-          <%= link_to 'Admin', admin_memes_path, class: "button" %>
+          <%= link_to 'Admin', admin_memes_path, class: "button radius round" %>
         <% end %>
 
         <% if user_signed_in? %>
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button"  %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button radius round"  %>
         <% else %>
-          <%= link_to 'Sign In', new_user_session_path, class: "button"  %>
-          <%= link_to 'Sign Up', new_user_registration_path, class: "button"  %>
+          <%= link_to 'Sign In', new_user_session_path, class: "button radius round"  %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "button radius round"  %>
         <% end %>
       </li>
     </ul>
