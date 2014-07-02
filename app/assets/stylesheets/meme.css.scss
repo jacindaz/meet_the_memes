@@ -6,7 +6,20 @@ body {
   margin: 2% 10%;
 }
 
+.parent {
+  background-size: 100%;
+  background-image:url('../images/meme-background.jpg');
+/*  opacity: 0.4;
+  filter: alpha(opacity=40);  For IE8 and earlier
+  -moz-opacity: 0.4;
+  -khtml-opacity: 0.4;*/
+}
 
 h1, h2, h3, h4, h5 {
   font-family: 'dayposterblackregular';
+}
+
+.child {
+  background: rgba(255,255,255, 1);
+  padding: 3%;
 }

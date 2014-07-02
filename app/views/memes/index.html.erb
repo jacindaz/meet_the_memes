@@ -1,13 +1,11 @@
-<div>
-  <h1> Behold Meme </h1>
-</div>
-
-<%= form_tag memes_path, method: 'get' do %>
-  <div>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", name: nil %>
-  </div>
-<% end %>
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+  <% @memes.each do |meme| %>
+    <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+    <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+    <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+    <li><%= image_tag("captain_dogerica.jpg", size: "128x80", alt: "Captain Dogerica") %></li>
+  <% end %>
+</ul>
 
 <div>
   <table>
