@@ -6,7 +6,7 @@ describe Review do
     meme = FactoryGirl.create(:meme)
     review = FactoryGirl.create(:review, meme: meme)
 
-    should validate_uniqueness_of(:title)
+    should validate_uniqueness_of(:title).scoped_to(:meme_id)
     should validate_uniqueness_of(:user_id).scoped_to(:meme_id)
     should have_valid(:title).when("this is valid", "another title")
     should have_valid(:rating).when(1, 5)
