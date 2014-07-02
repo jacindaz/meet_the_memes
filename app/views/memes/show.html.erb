@@ -33,7 +33,7 @@
   <p><%= @meme.description %></p>
 </div>
 
-<div>
+<div id="reviews">
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
     <h4><%= review.title %><i>(<%= review.rating %>)</i></h4>
     <p>By: <%= review.user.username %></p>
@@ -66,14 +66,14 @@
 
 <hr>
 <% if current_user %>
-  <% if !@meme.has_review_from?(current_user) %>
+  
     <h3>Submit a Review</h3>
-    <%= simple_form_for [@meme, @review] do |f| %>
+    <%= simple_form_for [@meme, @review], remote: true do |f| %>
       <%= f.input :title, input_html: { maxlength: 90 } %>
       <%= f.label :rating %>
       <%= f.select :rating, [5,4,3,2,1] %>
       <%= f.input :body, placeholder: "Do you love this meme???" %>
-      <%= f.button :submit, "Submit Review" %>
+      <%= f.button :submit, "Submit Review", {id: 'submit-review'} %>
     <% end %>
-  <% end %>
+  
 <% end %>

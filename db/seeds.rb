@@ -190,9 +190,3 @@ end
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-Meme.create(url: "http://cdn.memegenerator.net/instances/500x/43562936.jpg",
-            name: "I tried TDD once",
-            description: "Cat doesn't like test driven development!"
-            )

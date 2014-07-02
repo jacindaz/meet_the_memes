@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'email_spec'
+  gem 'quiet_assets'
 end
 
 group :production do
