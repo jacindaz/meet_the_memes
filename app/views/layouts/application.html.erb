@@ -16,7 +16,27 @@
   <div class="parent">
   <div class="child">
 
-<h1> Behold Meme </h1>
+<div class="row">
+  <div class="small-6 large-6 columns">
+    <h1 style="float:left;"> Behold Meme</h1>
+  </div>
+  <div class="small-4 large-3 columns">
+    <ul>
+      <li class="has-form" style="list-style:none;float:right;">
+        <% if current_user && current_user.admin %>
+          <%= link_to 'Admin', admin_memes_path, class: "button" %>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button"  %>
+        <% else %>
+          <%= link_to 'Sign In', new_user_session_path, class: "button"  %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "button"  %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <div class="contain-to-grid sticky">
   <nav class="top-bar" data-topbar>
@@ -24,8 +44,6 @@
       <li class="name">
         <h1><%= link_to 'All Memes', memes_path %></h1>
       </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
     <section class="top-bar-section">
@@ -39,8 +57,6 @@
           </ul>
         </li>
       </ul>
-
-
 
       <!-- Left Nav search bar Section -->
       <ul class="left">
@@ -62,28 +78,12 @@
   </nav>
 </div>
 
+<br>
 
-
-   <div class="nav">
-
-
-
-      <% if current_user && current_user.admin %>
-        <%= link_to 'Admin', admin_memes_path %>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign In', new_user_session_path %>
-        <%= link_to 'Sign Up', new_user_registration_path %>
-      <% end %>
-    </div>
-
-    <% if flash.any? %>
-      <div class="notice"><%= flash[:notice] %></div>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
+<% if flash.any? %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
 
     <%= yield %>
   </div>
