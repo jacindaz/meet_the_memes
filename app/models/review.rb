@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
   has_many :votes, dependent: :destroy
 
   validates_presence_of :meme, :rating, :title, :body
-  validates_uniqueness_of :title
+  validates_uniqueness_of :title, scope: :meme_id
 
   validates_uniqueness_of :user_id, scope: :meme_id
 

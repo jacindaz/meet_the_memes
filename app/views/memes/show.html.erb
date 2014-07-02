@@ -23,9 +23,11 @@
   <%= image_tag @meme.picture %>
 </div>
 
-<div>
-  <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
-</div>
+<% if @meme.url != '' %>
+  <div>
+    <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
+  </div>
+<% end %>
 
 <div>
   <p><%= @meme.description %></p>

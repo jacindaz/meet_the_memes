@@ -16,6 +16,27 @@ pictures.each_with_index do |pic, i|
       user_id: 1,
       meme_id: meme.id
       )
+    Review.create(
+      rating: rand(1..5),
+      title: "This isn't not the title! So wow. #{i + 1}",
+      body: "OMG teh meme!  First! Other internet idiosyncrasies! Much doge. Such doge.",
+      user_id: 3,
+      meme_id: meme.id
+      )
+    Review.create(
+      rating: rand(1..5),
+      title: "This isn't not the title! So wow. #{i + 2}",
+      body: "OMG teh meme!  First! Other internet idiosyncrasies! Much doge. Such doge.",
+      user_id: 4,
+      meme_id: meme.id
+      )
+    Review.create(
+      rating: rand(1..5),
+      title: "This isn't not the title! So wow. #{i + 3}",
+      body: "OMG teh meme!  First! Other internet idiosyncrasies! Much doge. Such doge.",
+      user_id: 5,
+      meme_id: meme.id
+      )
   end
 end
 # Rails' form_for helper automatically multi-part encodes uploads. Rake commands like db:seed do not.
