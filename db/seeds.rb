@@ -51,7 +51,7 @@ users = [
   { email: 'simon2@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
-    username: 'zealot' },
+    username: 'zealot' }
 ]
 
 memes = [
@@ -156,28 +156,27 @@ reviews = [
 ]
 
 users.each do |user|
-  User.create(user)
+  User.create!(user)
 end
 
 memes.each do |meme|
   meme[:user_id] = User.all.sample.id
-  current_meme = Meme.create(meme)
+  current_meme = Meme.create!(meme)
   reviews.sample(rand(0..8)).each do |review|
     review_submitter = current_meme.user
-    while review_submitter == current_meme.user
+    while review_submitter == current_meme.user || current_meme.reviews.exists?(user: review_submitter)
       review_submitter = User.all.sample
     end
     review[:user_id] = review_submitter.id
     review[:meme_id] = current_meme.id
-    current_review = Review.create(review)
+    current_review = Review.create!(review)
     rand(2..10).times do
       vote_submitter = review_submitter
-      while vote_submitter == review_submitter
+      while vote_submitter == review_submitter || current_review.votes.exists?(user: vote_submitter)
         vote_submitter = User.all.sample
       end
-      Vote.create(value: [-1, 1].sample, user_id: vote_submitter.id, review_id: current_review.id)
+      Vote.create!(value: [-1, 1].sample, user_id: vote_submitter.id, review_id: current_review.id)
     end
-
   end
 end
 # Rails' form_for helper automatically multi-part encodes uploads. Rake commands like db:seed do not.
@@ -190,9 +189,3 @@ end
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-Meme.create(url: "http://cdn.memegenerator.net/instances/500x/43562936.jpg",
-            name: "I tried TDD once",
-            description: "Cat doesn't like test driven development!"
-            )
