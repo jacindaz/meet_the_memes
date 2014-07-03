@@ -5,6 +5,8 @@
 //SCSS variables--------------------------------------------------------------------
 $header-fonts: 'dayposterblackregular', Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
 $body-fonts: 'Exo', Consolas, monaco, monospace;
+$turquoise-blue: #00cad3;
+$bright-yellow: #ffcc00;
 
 //--------------------------------------------------------------------
 body {
@@ -24,4 +26,25 @@ h1, h2, h3, h4, h5 {
 }
 .header-text {
   color: black;
+}
+input[type=submit] {
+  @extend .radius;
+  @extend .round;
+  @extend .small;
+  @extend .button;
+}
+
+.button {
+  background-color: $turquoise-blue;
+}
+
+input[type=submit].search-button {
+  background-color: $bright-yellow;
+  color: black;
+}
+
+.round {
+  -moz-border-radius:    500px;
+  -webkit-border-radius: 500px;
+  border-radius:         500px;
 }

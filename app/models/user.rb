@@ -5,9 +5,6 @@ class User < ActiveRecord::Base
   has_many :memes
   has_many :votes
 
-  validates :email, presence: true
-  validates :password, presence: true, confirmation: true, length: { minimum: 10 }
-  validates :password_confirmation, presence: true
   validates :username, presence: true, length: { minimum: 2, maximum: 25 }
 
   # Include default devise modules. Others available are:

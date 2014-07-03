@@ -7,51 +7,63 @@ users = [
   { email: 'judas@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/judas.jpg")),
     username: 'betrayer' },
   { email: 'peter@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/peter.jpg")),
     username: 'simonwhoiscalledpeter' },
   { email: 'andrew@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/andrew.jpg")),
     username: 'petersbro' },
   { email: 'james@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/james.jpg")),
     username: 'firstsonofz'},
   { email: 'john@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/john.jpg")),
     username: 'saviorsnumber1' },
   { email: 'philip@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/philip.jpg")),
     username: 'plainsaint' },
   { email: 'bartholomew@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/bart.jpg")),
     username: 'somecallmenatedogg' },
   { email: 'thomas@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/thomas.jpg")),
     username: 'didymus' },
   { email: 'mathew@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/matthew.jpg")),
     username: 'taxman' },
   { email: 'james2@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/james2.jpg")),
     username: 'sonofalphaeus' },
   { email: 'thaddaeus@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/thaddeus.jpg")),
     username: 'jesusbro' },
   { email: 'simon2@seeder.com',
     password: 'password123',
     password_confirmation: 'password123',
-    username: 'zealot' },
+    profile_picture: File.open(File.join("#{Rails.root}/db/seeds/simon.jpg")),
+    username: 'zealot' }
 ]
 
 memes = [
@@ -156,28 +168,27 @@ reviews = [
 ]
 
 users.each do |user|
-  User.create(user)
+  User.create!(user)
 end
 
 memes.each do |meme|
   meme[:user_id] = User.all.sample.id
-  current_meme = Meme.create(meme)
+  current_meme = Meme.create!(meme)
   reviews.sample(rand(0..8)).each do |review|
     review_submitter = current_meme.user
-    while review_submitter == current_meme.user
+    while review_submitter == current_meme.user || current_meme.reviews.exists?(user: review_submitter)
       review_submitter = User.all.sample
     end
     review[:user_id] = review_submitter.id
     review[:meme_id] = current_meme.id
-    current_review = Review.create(review)
+    current_review = Review.create!(review)
     rand(2..10).times do
       vote_submitter = review_submitter
-      while vote_submitter == review_submitter
+      while vote_submitter == review_submitter || current_review.votes.exists?(user: vote_submitter)
         vote_submitter = User.all.sample
       end
-      Vote.create(value: [-1, 1].sample, user_id: vote_submitter.id, review_id: current_review.id)
+      Vote.create!(value: [-1, 1].sample, user_id: vote_submitter.id, review_id: current_review.id)
     end
-
   end
 end
 # Rails' form_for helper automatically multi-part encodes uploads. Rake commands like db:seed do not.
@@ -190,9 +201,3 @@ end
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-Meme.create(url: "http://cdn.memegenerator.net/instances/500x/43562936.jpg",
-            name: "I tried TDD once",
-            description: "Cat doesn't like test driven development!"
-            )
