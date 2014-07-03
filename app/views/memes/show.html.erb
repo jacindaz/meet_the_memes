@@ -2,7 +2,7 @@
   <h2>
     <%= @meme.name %> - Average User Rating:
     <% if @meme.average_rating != nil %>
-      <%= @meme.average_rating %>
+      <%= @meme.average_rating.round(1) %>
     <% else %>
       No has rating!
     <% end %>
@@ -35,6 +35,7 @@
 
 <div>
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
+    <hr>
     <h4><%= review.title %><i>(<%= review.rating %>)</i></h4>
     <p>By: <%= review.user.username %></p>
     <p><%= review.body %></p>
@@ -71,7 +72,7 @@
     <%= simple_form_for [@meme, @review] do |f| %>
       <%= f.input :title, input_html: { maxlength: 90 } %>
       <%= f.label :rating %>
-      <%= f.select :rating, [5,4,3,2,1] %>
+      <%= f.select :rating, [5,4,3,2,1,0] %>
       <%= f.input :body, placeholder: "Do you love this meme???" %>
       <%= f.button :submit, "Submit Review" %>
     <% end %>
