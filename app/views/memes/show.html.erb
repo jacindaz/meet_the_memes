@@ -37,7 +37,7 @@
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
     <hr>
     <h4><%= review.title %><i>(<%= review.rating %>)</i></h4>
-    <p>By: <%= review.user.username %></p>
+    <p>By: <%= image_tag review.user.profile_picture %> <%= review.user.username %></p>
     <p><%= review.body %></p>
 
       <% if current_user %>
