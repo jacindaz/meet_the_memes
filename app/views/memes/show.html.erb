@@ -1,43 +1,45 @@
-<div>
-  <h2>
-    <%= @meme.name %> - Average User Rating:
-    <% if @meme.average_rating != nil %>
-      <%= @meme.average_rating.round(1) %>
-    <% else %>
-      No has rating!
-    <% end %>
-  </h2>
-</div>
-<p>Added by: <%= @meme.user.username %></p>
-<% if @meme.user == current_user %>
+<div style="text-align: center;">
   <div>
-    <%= link_to "Edit", edit_meme_path(@meme) %>
+    <h2>
+      <%= @meme.name %> - Average User Rating:
+      <% if @meme.average_rating != nil %>
+        <%= @meme.average_rating.round(1) %>
+      <% else %>
+        No has rating!
+      <% end %>
+    </h2>
+  </div>
+  <p>Added by: <%= image_tag @meme.user.profile_picture.thumbnail, size: "35", class: "round" %> <%= @meme.user.username %></p>
+  <% if @meme.user == current_user %>
+    <div>
+      <%= link_to "Edit", edit_meme_path(@meme) %>
+    </div>
+
+    <div>
+      <%= link_to "Delete", meme_path(@meme), method: :delete %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= image_tag @meme.picture %>
   </div>
 
+  <% if @meme.url != '' %>
+    <div>
+      <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
+    </div>
+  <% end %>
+
   <div>
-    <%= link_to "Delete", meme_path(@meme), method: :delete %>
+    <p><%= @meme.description %></p>
   </div>
-<% end %>
-
-<div>
-  <%= image_tag @meme.picture %>
-</div>
-
-<% if @meme.url != '' %>
-  <div>
-    <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
-  </div>
-<% end %>
-
-<div>
-  <p><%= @meme.description %></p>
 </div>
 
 <div>
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
     <hr>
-    <h4><%= review.title %><i>(<%= review.rating %>)</i></h4>
-    <p>By: <%= image_tag review.user.profile_picture %> <%= review.user.username %></p>
+    <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
+    <p><%= image_tag review.user.profile_picture.thumbnail, size: "35", class: "round" %> <%= review.user.username %></p>
     <p><%= review.body %></p>
 
       <% if current_user %>
@@ -46,17 +48,17 @@
             <% @current_vote = review.vote_from(current_user) %>
             <p><strong>Vote: </strong>
               <% if @current_vote.value == -1 %>
-                You've downvoted this review. |
-                <%= link_to "Vote Up", meme_review_vote_path(@meme, review, @current_vote, vote: {value: 1}), method: :patch %>
+                <%= link_to image_tag("happy_face.png", size: "25"), meme_review_vote_path(@meme, review, @current_vote, vote: {value: 1}), method: :patch %> |
+                <%= image_tag("mad_face_select.png", size: "25") %>
               <% elsif @current_vote.value == 1 %>
-                You've upvoted this review. |
-                <%= link_to "Vote Down", meme_review_vote_path(@meme, review, @current_vote, vote: {value: -1}), method: :patch %>
+                <%= image_tag("happy_face_select.png", size: "25") %> |
+                <%= link_to image_tag("mad_face.png", size: "25"), meme_review_vote_path(@meme, review, @current_vote, vote: {value: -1}), method: :patch %>
               <% end %>
             </p>
           <% else %>
             <p><strong>Vote: </strong>
-              <%= link_to "Vote Up", meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %> |
-              <%= link_to "Vote Down", meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
+              <%= link_to image_tag("happy_face.png", size: "25"), meme_review_votes_path(@meme, review, @vote, vote: {value: 1}), method: :post %> |
+              <%= link_to image_tag("mad_face.png", size: "25"), meme_review_votes_path(@meme, review, @vote, vote: {value: -1}), method: :post %>
             </p>
           <% end %>
         <% end %>

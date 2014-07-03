@@ -1,5 +1,5 @@
-<h3>Sort by: <%= link_to 'Name', memes_path(order: :name)%>,
-<%= link_to 'Average Rating', memes_path(order: :average_rating)%></h3>
+<h5>Sort by: <%= link_to 'Name', memes_path(order: :name)%>,
+<%= link_to 'Average Rating', memes_path(order: :average_rating)%></h5>
 
 <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
   <% @memes.each do |meme| %>
@@ -7,7 +7,7 @@
       <%= link_to (image_tag meme.picture.thumbnail), meme_path(meme.id) %><br>
       <%= link_to meme.name, meme_path(meme.id) %>
       <% if meme.average_rating.present? %>
-        (<%= meme.average_rating.round(1) %>)
+        (<%= meme.average_rating %>)
       <% else %>
         (No Ratings)
       <% end %>

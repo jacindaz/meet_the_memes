@@ -32,9 +32,19 @@ input[type=submit] {
   @extend .round;
   @extend .small;
   @extend .button;
+}
+
+.button {
   background-color: $turquoise-blue;
 }
+
 input[type=submit].search-button {
   background-color: $bright-yellow;
   color: black;
+}
+
+.round {
+  -moz-border-radius:    500px;
+  -webkit-border-radius: 500px;
+  border-radius:         500px;
 }
