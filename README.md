@@ -16,11 +16,7 @@ Personalize my account with an avatar.
 
 Keep the site clean by moderating the site's images and reviews with admin privileges.
 
-Alert admins to questionable material with flags.
-
 Locate images and reviews easily by searching for relevant phrases or sorting by rating.
-
-See trending tags to help me find new memes.
 
 Know when someone writes about my images by receiving and email.
 
