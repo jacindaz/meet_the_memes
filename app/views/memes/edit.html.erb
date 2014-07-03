@@ -2,7 +2,7 @@
   <h1>Edit <%= @meme.name %></h1>
 </div>
 
-<%= link_to "Back to #{@meme.name}", meme_path(@meme) %>
+<%= link_to "Back to #{@meme.name}", meme_path(@meme) %><br><br>
 
 <div>
   <% if @meme.errors.any? %>
@@ -17,17 +17,17 @@
 <div>
   <%= form_for @meme do |f| %>
     <div>
-      <%= f.label :name %>:
+      <%= f.label :name %>
       <%= f.text_field :name %><br>
     </div>
 
     <div>
-      <%= f.label :url %>:
+      <%= f.label :url %>
       <%= f.text_field :url %><br>
     </div>
 
     <div>
-      <%= f.label :description %>:
+      <%= f.label :description %>
       <%= f.text_field :description %><br>
     </div>
 
