@@ -8,7 +8,7 @@ class Meme < ActiveRecord::Base
   validates :url, presence: true
 
   def update_average_rating
-    self.update(average_rating: self.reviews.average(:rating))
+    self.update(average_rating: self.reviews.average(:rating).round(1))
   end
 
   def self.search(query)

@@ -23,7 +23,7 @@
         <span class="prefix">http://</span>
       </div>
       <div class="small-9 large-10 columns">
-        <%= f.text_field :url, placeholder: "URL", class: "error" %>
+        <%= f.text_field :url, placeholder: "Where find teh meme?", class: "error" %>
       </div>
     </div><br>
 
@@ -31,7 +31,7 @@
       <%= f.text_area :description, placeholder: "Such description. Much detail." %><br>
     </div>
 
-    <div><%= f.label :picture %><%= f.file_field :picture %></div>
+    <div><%= f.label 'Meme Image:' %><%= f.file_field :picture %></div>
 
     <%= f.submit 'Submit teh Meme', class: "button radius round" %>
 

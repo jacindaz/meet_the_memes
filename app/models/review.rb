@@ -9,11 +9,11 @@ class Review < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: :meme_id
 
   validates :meme_id, numericality: { integer: true }
-  validates :rating, numericality: { integer: true, greater_than_or_equal_to: 1,
+  validates :rating, numericality: { integer: true, greater_than_or_equal_to: 0,
                                       less_than_or_equal_to: 5 }
-  validates :title, length: { minimum: 10, maximum: 90 }
+  validates :title, length: { minimum: 2, maximum: 90 }
   validates :body, length: {
-    minimum: 5,
+    minimum: 2,
     maximum: 300,
     tokenizer: lambda { |str| str.scan(/\w+/) },
     too_short: "Must have at least %{count} words.",
