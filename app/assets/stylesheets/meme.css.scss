@@ -48,3 +48,18 @@ input[type=submit].search-button {
   -webkit-border-radius: 500px;
   border-radius:         500px;
 }
+.inner-review-panel {
+  @extend .panel;
+  @extend .callout;
+  @extend .radius;
+  padding-bottom: 20px;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 30px;
+}
+
+/**********************Unused Classes and Styles*************************/
+.review-panel:last-child {
+  padding-bottom: 100px;
+}

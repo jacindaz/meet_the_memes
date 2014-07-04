@@ -35,9 +35,10 @@
   </div>
 </div>
 
-<div>
+
+<div class="panel">
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
-    <hr>
+    <div class="inner-review-panel">
     <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
     <p><%= image_tag review.user.profile_picture.thumbnail, size: "35", class: "round" %> <%= review.user.username %></p>
     <p><%= review.body %></p>
@@ -63,9 +64,10 @@
           <% end %>
         <% end %>
       <% end %>
-
-  <% end %>
+    </div>
+    <% end %>
 </div>
+
 
 <hr>
 <% if current_user %>
