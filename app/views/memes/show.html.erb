@@ -1,39 +1,38 @@
-<div style="text-align: center;">
-  <div>
-    <h2>
-      <%= @meme.name %> - Average User Rating:
-      <% if @meme.average_rating != nil %>
-        <%= @meme.average_rating.round(1) %>
-      <% else %>
-        No has rating!
-      <% end %>
-    </h2>
-  </div>
-  <p>Added by: <%= image_tag @meme.user.profile_picture.thumbnail, size: "35", class: "round" %> <%= @meme.user.username %></p>
-  <% if @meme.user == current_user %>
-    <div>
-      <%= link_to "Edit", edit_meme_path(@meme) %>
-    </div>
-
-    <div>
-      <%= link_to "Delete", meme_path(@meme), method: :delete %>
-    </div>
-  <% end %>
-
-  <div>
-    <%= image_tag @meme.picture %>
-  </div>
-
-  <% if @meme.url != '' %>
-    <div>
-      <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
-    </div>
-  <% end %>
-
-  <div>
-    <p><%= @meme.description %></p>
-  </div>
-</div>
+<table width="100%" style="padding: 10px;">
+  <tr>
+    <td>
+        <h2><%= @meme.name %><h2>
+          <hr>
+        <h5>Average User Rating:
+          <% if @meme.average_rating != nil %>
+            <%= @meme.average_rating.round(1) %>
+          <% else %>
+            No has rating!
+          <% end %>
+        </h5>
+        <p><i><%= image_tag @meme.user.profile_picture.thumbnail, size: "25", class: "round" %>
+          <%= @meme.user.username %>, such upload.
+        </i></p>
+        <% if @meme.user == current_user %>
+          <p><strong>
+            <%= link_to "Edit", edit_meme_path(@meme) %> | <%= link_to "Delete", meme_path(@meme), method: :delete %>
+          </strong></p>
+        <% end %>
+        <br>
+        <% if @meme.url != '' %>
+          <div>
+            <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
+          </div>
+        <% end %>
+        <p><%= @meme.description %></p>
+    </td>
+    <td>
+      <span data-tooltip class="has-tip" title="<%= @meme.description %>">
+        <%= image_tag @meme.picture, style: "float:right;" %>
+      </span>
+    </td>
+  </tr>
+</table>
 
 
 <div class="panel">
