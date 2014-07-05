@@ -1,7 +1,12 @@
 <table width="100%" style="padding: 10px;">
   <tr>
     <td>
-        <h2><%= @meme.name %><h2>
+      <span data-tooltip class="has-tip" title="Wow. Much wow.">
+        <%= image_tag @meme.picture, style: "float:left;" %>
+      </span>
+    </td>
+    <td style="width: 45%;">
+        <h2><center><%= @meme.name %></center><h2>
           <hr>
         <h5>Average User Rating:
           <% if @meme.average_rating != nil %>
@@ -18,18 +23,11 @@
             <%= link_to "Edit", edit_meme_path(@meme) %> | <%= link_to "Delete", meme_path(@meme), method: :delete %>
           </strong></p>
         <% end %>
+        <p><%= @meme.description %></p>
         <br>
         <% if @meme.url != '' %>
-          <div>
-            <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
-          </div>
+          <p style="font-size: 1vw; bottom:0; position: aboslute;">This meme came from: <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
         <% end %>
-        <p><%= @meme.description %></p>
-    </td>
-    <td>
-      <span data-tooltip class="has-tip" title="<%= @meme.description %>">
-        <%= image_tag @meme.picture, style: "float:right;" %>
-      </span>
     </td>
   </tr>
 </table>
@@ -81,3 +79,4 @@
     <% end %>
   <% end %>
 <% end %>
+

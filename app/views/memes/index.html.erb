@@ -1,17 +1,25 @@
 <h5>Sort by: <%= link_to 'Name', memes_path(order: :name)%>,
 <%= link_to 'Average Rating', memes_path(order: :average_rating)%></h5>
 
+
+<% index = 0 %>
 <ul class="clearing-thumbs small-block-grid-2 medium-block-grid-3 large-block-grid-4">
   <% @memes.each do |meme| %>
     <li>
-      <%= link_to (image_tag meme.picture.thumbnail), meme_path(meme.id) %><br>
-      <%= link_to meme.name, meme_path(meme.id) %>
-      <% if meme.average_rating.present? %>
-        (<%= meme.average_rating %>)
-      <% else %>
-        (No Ratings)
-      <% end %>
+      <a data-reveal-id="myModal"><%= image_tag meme.picture.thumbnail %></a>
+      <% current_meme = meme %>
+      <p>This is the current meme: <%= current_meme %></p>
+
+      <div id="myModal" class="reveal-modal" data-reveal>
+        <p>This is the current meme: <%= @all_memes[index] %>, index: <%= index %></p>
+        <h2><%= link_to current_meme.name, meme_path(current_meme.id) %></h2>
+        <p class="lead">
+          <%= current_meme.description %>
+        </p>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
     </li>
+    <% index += 1 %>
   <% end %>
 </ul>
 

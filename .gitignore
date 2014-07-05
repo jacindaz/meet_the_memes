@@ -21,3 +21,5 @@
 #Ignore AWS keys
 /.env
 
+
+code-bits.html.erb
