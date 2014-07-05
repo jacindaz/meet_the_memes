@@ -18,9 +18,6 @@ class MemesController < ApplicationController
     else
       @memes = @memes.order(:created_at).page(params[:page])
     end
-
-    @all_memes = []
-    @memes.each { |meme| @all_memes << meme }
   end
 
   def show
