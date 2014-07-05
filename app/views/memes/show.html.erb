@@ -1,43 +1,41 @@
-<div style="text-align: center;">
-  <div>
-    <h2>
-      <%= @meme.name %> - Average User Rating:
-      <% if @meme.average_rating != nil %>
-        <%= @meme.average_rating.round(1) %>
-      <% else %>
-        No has rating!
-      <% end %>
-    </h2>
-  </div>
-  <p>Added by: <%= image_tag @meme.user.profile_picture.thumbnail, size: "35", class: "round" %> <%= @meme.user.username %></p>
-  <% if @meme.user == current_user %>
-    <div>
-      <%= link_to "Edit", edit_meme_path(@meme) %>
-    </div>
+<table width="100%" style="padding: 10px;">
+  <tr>
+    <td>
+      <span data-tooltip class="has-tip" title="Wow. Much wow.">
+        <%= image_tag @meme.picture, style: "float:left;height: 300px;" %>
+      </span>
+    </td>
+    <td style="width: 45%;">
+        <h2><center><%= @meme.name %></center><h2>
+          <hr>
+        <h5>Average User Rating:
+          <% if @meme.average_rating != nil %>
+            <%= @meme.average_rating.round(1) %>
+          <% else %>
+            No has rating!
+          <% end %>
+        </h5>
+        <p><i><%= image_tag @meme.user.profile_picture.thumbnail, size: "25", class: "round" %>
+          <%= @meme.user.username %>, such upload.
+        </i></p>
+        <% if @meme.user == current_user %>
+          <p><strong>
+            <%= link_to "Edit", edit_meme_path(@meme) %> | <%= link_to "Delete", meme_path(@meme), method: :delete %>
+          </strong></p>
+        <% end %>
+        <p><%= @meme.description %></p>
+        <br>
+        <% if @meme.url != '' %>
+          <p style="font-size: 1vw; bottom:0; position: aboslute;">This meme came from: <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
+        <% end %>
+    </td>
+  </tr>
+</table>
 
-    <div>
-      <%= link_to "Delete", meme_path(@meme), method: :delete %>
-    </div>
-  <% end %>
 
-  <div>
-    <%= image_tag @meme.picture %>
-  </div>
-
-  <% if @meme.url != '' %>
-    <div>
-      <p> This meme came from <%= link_to @meme.url, @meme.url, target: '_blank' %></p>
-    </div>
-  <% end %>
-
-  <div>
-    <p><%= @meme.description %></p>
-  </div>
-</div>
-
-<div>
+<div class="panel">
   <% @meme.reviews.order(popularity: :desc, title: :desc).each do |review| %>
-    <hr>
+    <div class="inner-review-panel">
     <h4><%= review.title %> <i>(<%= review.rating %>)</i></h4>
     <p><%= image_tag review.user.profile_picture.thumbnail, size: "35", class: "round" %> <%= review.user.username %></p>
     <p><%= review.body %></p>
@@ -63,9 +61,10 @@
           <% end %>
         <% end %>
       <% end %>
-
-  <% end %>
+    </div>
+    <% end %>
 </div>
+
 
 <hr>
 <% if current_user %>
@@ -80,3 +79,4 @@
     <% end %>
   <% end %>
 <% end %>
+
